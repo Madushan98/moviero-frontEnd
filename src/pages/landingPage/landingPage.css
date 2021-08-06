@@ -1,0 +1,181 @@
+.navBar {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+
+
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 1rem;
+    padding: 10px 120px;
+    height: 65px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.landing {
+    margin-top: 150px;
+    padding: 0 25px 0 25px;
+    width: 90%;
+    height: 600px;
+    justify-content: center;
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.landing .top-title {
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.landing .top-title h1 {
+
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 60px;
+    line-height: 66px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15;
+
+}
+
+.landing .top-title h3 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 25;
+
+    color: #929A9F;
+}
+
+.landing .top-title button {
+    width: 337px;
+    height: 66px;
+    background: #11101D;
+    cursor: pointer;
+
+    box-shadow: 0px 10px 30px rgba(56, 29, 219, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+}
+
+
+.landing .top-image {
+    width: 500px;
+    height: 650px;
+    background: linear-gradient(0deg, rgba(22, 21, 97, 0.56), rgba(22, 21, 97, 0.56)), url("../../assets/images/poster.png");
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2), -50px 100px 0px #F7F8FA;
+}
+
+.second-land {
+
+    height: 750px;
+    background: #F5F8FA;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0 50px 0;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+}
+
+
+.second-land .description {
+    width: 100%;
+    color: white;
+    background: #121329;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: center;
+    align-self: center;
+}
+
+
+.second-land .description .title {
+    color: white;
+    align-self: center;
+
+    width: 100%;
+}
+
+.second-land .description .title h1 {
+
+    font-size: 40px;
+    color: white;
+}
+
+
+.second-land .description .pharagraph {
+
+
+
+
+
+    width: 70%;
+    align-self: center;
+}
+
+.second-land .description .pharagraph p {
+    font-size: 30px;
+    color: white;
+    line-height: 40px;
+}
+
+.second-land .devices {
+    margin-top: 100px;
+    width: 660px;
+    height: 82px;
+    background: url("../../assets/images/devices.png");
+
+}
+
+
+
+.footer {
+    color: white;
+    background: #121329;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: center;
+    align-self: center;
+}
+
+.footer .footer-bar {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-bar p {
+    color: white;
+    font-size: 25px;
+    padding: 0 10px 0 10px;
+}

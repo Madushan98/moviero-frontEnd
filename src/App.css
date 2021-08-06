@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,31 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+* {
+  font-family: 'Nunito', sans-serif;
+
+  text-decoration: none;
+  color: #2c2c54;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all .3s cubic-bezier(.38, 1.15, .7, 1.12);
+}
+
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  color: white;
+
+
+
+  line-height: 20px;
+
 }
