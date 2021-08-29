@@ -6,6 +6,10 @@
     height: 170px;
     justify-content: center;
     align-self: center;
+    position: absolute;
+
+
+    width: 100%;
 }
 
 .footer .footer-bar {

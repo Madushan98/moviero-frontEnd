@@ -3,17 +3,19 @@ import React from 'react';
 import './landingPage.css'
 
 import { Link } from "react-router-dom";
-
+import Footer from '../../components/footer/footer'
 class LandingPage extends React.Component {
 
 
+
     render() {
+
         return (
             <section>
 
                 <div className="landing">
                     <div className="top-title">
-                        <h1>Unlimited movies, Tv Shows  <br />  And More.</h1>
+                        <h1>Unlimited movies,  Tv Shows  <br />  And More.</h1>
                         <h3>Watch anywhere. Cancel anytime.</h3>
                         <Link to='/signin'><button>Let's Go</button></Link>
                     </div>
@@ -46,15 +48,21 @@ class LandingPage extends React.Component {
                 </div>
 
 
-
+                <Footer />
 
             </section>
 
 
 
         );
+
+
+
     }
 }
+
+
+
 
 
 export default LandingPage;

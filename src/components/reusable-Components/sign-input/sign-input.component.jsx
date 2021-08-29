@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './sign-input.component.css'
+import './sign-input.component.scss'
 
 
 

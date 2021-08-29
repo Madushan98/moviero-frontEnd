@@ -1,80 +1,122 @@
 
 import './App.css';
 import Signup from './pages/sign-up/signup'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
 import Login from './pages/login/login'
 import LandingPage from './pages/landingPage/landingPage'
 import Header from './components/header/header'
 import Footer from './components/footer/footer'
-import HomePage from './pages/homepage/homepage'
-import axios from 'axios';
-
+import HomePage from './pages/Customer-Pages/homepage/homepage'
+import SideNavBar from './components/sideNavbar/sideNavbar'
+import { connect } from 'react-redux';
+import store from './redux/store'
+import { logUser } from './redux/user/user.action';
+import Categories from './components/categories/categories';
+import UserPasswordReset  from './pages/Customer-Pages/UserPasswordReset/UserPasswordReset';
+import Category from './components/categories/category';
+import UserProfile from './pages/Customer-Pages/user-profile/userProfile'
 class App extends React.Component {
 
 
-  constructor() {
-    super();
-    this.state = {
-      user: null
-    };
-  }
 
 
 
   componentDidMount() {
+    const { logUser, currentUser } = this.props;
 
-    const userId = localStorage.getItem('userId')
-
-    const userUrl = 'users/' + userId;
-
-
-
-
-
-
-    axios.get(userUrl, {
-      headers: {
-        Authorization: localStorage.getItem('token'), //here remove + in template litereal
-      },
-    }).then(res => {
-      console.log(res);
-
-      this.setState({ user: res.data });
-      console.log(this.state.user)
-    },
-      err => {
-        console.log(err);
-      }
-
-    )
-
+    logUser();
+    console.log(currentUser);
 
   }
+
 
 
   render() {
-    return (
+
+   
+    if (this.props.currentUser) {
+
+ if (this.props.currentUser.userRole === 'Admin') {
+       return (
+        <BrowserRouter>
+          <Header currentUser={this.props.currentUser} />
+          <SideNavBar />
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+           
+            <Route exact path='/user' component={UserProfile} />
+            <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<Login />)} />
+          </Switch>
+        </BrowserRouter>
+      );
+ } else {
+   
+      return (
+        <BrowserRouter>
+          <Header currentUser={this.props.currentUser} />
+          <SideNavBar />
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/categories' component={Categories} />
+            <Route exact path='/user' component={UserProfile} />
+             <Route exact path='/user/changePassword' component={UserPasswordReset} />
+            <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<Login />)} />
+          </Switch>
+        </BrowserRouter>
+      );
+    }
 
 
-      <BrowserRouter>
-        <Header />
-        <Switch>
+    } else if (this.props.loading) {
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
+    else {
 
-          <Route exact path='/' component={LandingPage} />
+      return (
 
-          <Route exact path='/' render={() => this.state.user ? (<Redirect to='/homepage' />) : (<HomePage />)} />
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/homepage' />) : (<Login />)} />
 
 
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/signin' component={Login} />
+            <Route exact path='/signup' component={Signup} />
 
-        </Switch>
-        <Footer />
-      </BrowserRouter>
-    );
+
+            <Route path='/' component={LandingPage} />
+
+
+
+
+          </Switch>
+
+        </BrowserRouter>
+
+      );
+    }
   }
+
 
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.user.currentUser,
+    loading: state.user.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logUser: () => dispatch(logUser())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
