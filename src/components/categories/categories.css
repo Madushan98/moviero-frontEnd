@@ -1,9 +1,9 @@
 .categories {
-   
-    padding-left: 150px;
+
+    padding-left: 250px;
     height: 800px;
-    width: 90%;
-    margin: 20px;
+    width: 100%;
+    margin-top: 70px;
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(10, 1fr);
@@ -72,10 +72,14 @@
 }
 
 
-.categories .box-title {
-  
+.box {
+    position: relative;
+}
 
-    width: 170px;
+.box .box-title {
+
+    position: absolute;
+    width: 60%;
 
     background: #080808;
 

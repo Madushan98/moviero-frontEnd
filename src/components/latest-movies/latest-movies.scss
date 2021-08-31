@@ -1,0 +1,17 @@
+.latestMovie-carousel {
+    padding-top: 40px;
+    height: 400px;
+    width: 100%;
+}
+
+.rec-carousel-item:focus {
+    outline: none;
+    box-shadow: inset 0 0 1px 0px rgb(180, 164, 180);
+}
+
+button.rec-dot {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.5);
+    height: 5px;
+    width: 5px;
+}

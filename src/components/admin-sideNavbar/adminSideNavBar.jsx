@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import './sideNavbar.scss'
+import './adminSideNavbar.scss'
 import 'boxicons'
 import { ReactComponent as ReactLogo } from '../../assets/svg/log-out.svg';
 import { logOutUser } from '../../redux/user/user.action'
@@ -8,11 +8,10 @@ import { Link } from 'react-router-dom';
 
 
 
-class SideNavBar extends React.Component {
+class AdminSideNavBar extends React.Component {
 
 
 
-   
     render() {
         return (
             <div className="side_navbar">
@@ -38,28 +37,28 @@ class SideNavBar extends React.Component {
                     </li>
                     <li>
 
-                        <Link to="categories">
-                             <i class='bx bxs-category' ></i>
+                        <Link to="analysis">
+                            <i class='bx bxs-analyse'></i>
                         </Link>
 
 
-                      
+                        <span className='tip'>Analysis</span>
                     </li>
                     <li>
-                      <Link to="/cart">
-                         <i class='bx bxs-cart' ></i>
+                      <Link to="/newMovie">
+                          <i class='bx bxs-image-add' ></i>
                         </Link>
 
 
-                        <span className='tip'>Cart</span>
+                        <span className='tip'></span>
                     </li>
                     <li>
-                        <Link to="/stream">
-                          <i class='bx bx-play-circle' ></i>
+                        <Link to="/newMovie">
+                           <i class='bx bx-user-minus' ></i>
 
 
                         </Link >
-                        <span className='tip'>Stream List</span>
+                        <span className='tip'>Add Movie</span>
                     </li>
                     <li>
                         <Link to="/user">
@@ -86,4 +85,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SideNavBar);
+export default connect(null, mapDispatchToProps)(AdminSideNavBar);

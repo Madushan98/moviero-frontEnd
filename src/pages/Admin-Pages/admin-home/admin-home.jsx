@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import NewMovie from '../newMovie-Add/newMovie'
 
 
 class AdminPage extends React.Component {
@@ -10,8 +10,11 @@ class AdminPage extends React.Component {
     render() {
         return (
             <div>
-                Admin
+               
             </div>
         )
     }
 }
+
+
+export default AdminPage;

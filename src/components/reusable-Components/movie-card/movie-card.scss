@@ -1,0 +1,92 @@
+.movie-Card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 275px;
+    height: 450px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    margin: 15px;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+
+
+    .movie-img {
+
+        margin: 10px;
+        width: 255px;
+        height: 350px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 6px;
+    }
+
+    .movie-detail {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        margin: 10px;
+
+
+        .movie-category {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 19px;
+            /* identical to box height */
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+
+        .movie-cart {
+            margin-top: 30px;
+            display: table;
+            width: 100px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Nunito Sans', sans-serif;
+            background: #11101D;
+            color: white;
+
+            span {
+
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+        }
+
+        .movie-cart:hover {
+            background: #ffffff;
+            color: #000;
+        }
+
+    }
+}
+
+
+.movie-Card:hover {
+    border-radius: 0;
+    background-color: rgb(0, 0, 0);
+    color: white;
+
+
+    .movie-category {
+     
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+}

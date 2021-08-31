@@ -10,7 +10,7 @@ import Categories from "../../../components/categories/categories";
 
 import Carousel  from '../../../components/carousel/carousel';
 
-
+import LatestMovies from '../../../components/latest-movies/lateset-movies'
 // Import Swiper styles
 
 
@@ -28,6 +28,7 @@ class HomePage extends React.Component {
       
         <div className="browser-features">
           <div className="feature-title">Latest Movies</div>
+                <LatestMovies />
         </div>
       </section>
     );

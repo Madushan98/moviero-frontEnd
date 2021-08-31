@@ -1,0 +1,33 @@
+#home-page {
+    padding-left: 100px;
+    height: 4000px;
+    width: 90%;
+    margin: 20px;
+
+
+    .carousel-item {
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+    }
+
+
+    .browser-features {
+
+        height: 4000px;
+        width: 90%;
+        margin-top: 50px;
+
+
+        .feature-title {
+
+            font-family: 'Nunito Sans', sans-serif;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 27px;
+            text-align: left;
+
+            color: #000000;
+        }
+    }
+}

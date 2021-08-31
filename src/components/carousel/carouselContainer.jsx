@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Carousel} from 'react-bootstrap'
 
-import './carousel.scss'
+
 
 const CarouselContainer = (props) => {
         
@@ -18,7 +18,7 @@ const CarouselContainer = (props) => {
      return (
 
 
-  <Carousel   autoPlay={true}  
+  <Carousel   autoPlay={true}  animation="false"
     interval={3000}
     controls={false}
          indicators={true}
@@ -65,7 +65,7 @@ const CarouselContainer = (props) => {
 
   } else return (
     <div>
-      404
+    
     </div>
   )
  

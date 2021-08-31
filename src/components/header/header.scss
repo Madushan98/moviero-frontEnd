@@ -1,0 +1,50 @@
+.navBar-top {
+    position: relative;
+    z-index: 1;
+
+    padding: 25px 50px 10px 50px;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+        padding: 0 60px;
+        line-height: 32px;
+        text-align: center;
+        letter-spacing: 0.065em;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+
+        }
+
+        h1 {
+            color: #11101d;
+            font-family: 'Roboto Mono', monospace;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 26px;
+            text-decoration: none;
+        }
+
+
+    }
+
+    .end-title {
+        padding-top: 5px;
+        line-height: 12px;
+        text-align: center;
+        letter-spacing: 0.065em;
+
+        h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+    }
+
+}

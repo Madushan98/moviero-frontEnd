@@ -14,8 +14,9 @@ import store from './redux/store'
 import { logUser } from './redux/user/user.action';
 import Categories from './components/categories/categories';
 import UserPasswordReset  from './pages/Customer-Pages/UserPasswordReset/UserPasswordReset';
-import Category from './components/categories/category';
 import UserProfile from './pages/Customer-Pages/user-profile/userProfile'
+import AdminPage from './pages/Admin-Pages/admin-home/admin-home'
+import AdminSideNavBar from './components/admin-sideNavbar/adminSideNavBar';
 class App extends React.Component {
 
 
@@ -26,7 +27,7 @@ class App extends React.Component {
     const { logUser, currentUser } = this.props;
 
     logUser();
-    console.log(currentUser);
+    
 
   }
 
@@ -37,20 +38,20 @@ class App extends React.Component {
    
     if (this.props.currentUser) {
 
- if (this.props.currentUser.userRole === 'Admin') {
+ if (this.props.currentUser.userRole.includes("ROLE_ADMIN") ) {
        return (
         <BrowserRouter>
           <Header currentUser={this.props.currentUser} />
-          <SideNavBar />
+          <AdminSideNavBar />
           <Switch>
-            <Route exact path='/' component={HomePage} />
+            <Route exact path='/' component={AdminPage} />
            
             <Route exact path='/user' component={UserProfile} />
             <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<Login />)} />
           </Switch>
         </BrowserRouter>
       );
- } else {
+ } else  {
    
       return (
         <BrowserRouter>

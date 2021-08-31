@@ -4,7 +4,7 @@ import axios from "axios";
 
 import CarouselContainer from "./carouselContainer";
 
-
+import './carousel.scss'
 class Carousel extends React.Component {
 
     state = {
@@ -13,12 +13,13 @@ class Carousel extends React.Component {
 
 
     componentDidMount() {
-        
-        axios.get('movies', {
+        setTimeout(() => {
+    
+            axios.get('movies', {
                 headers: {
                     Authorization: localStorage.getItem('token'),
                 },
- }).then(res => {
+            }).then(res => {
                 this.setState({
 
                     previewMovies: res.data,
@@ -30,12 +31,12 @@ class Carousel extends React.Component {
                 err => {
                     console.error(err);
                 })
-  
+        }, 500)
     }
 
     render() {
         return (
-            <div>
+            <div className="my__carousel_main">
                 <CarouselContainer previewMovies={this.state.previewMovies} />
             </div>
         )

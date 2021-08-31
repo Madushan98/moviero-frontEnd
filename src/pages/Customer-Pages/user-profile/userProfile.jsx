@@ -55,7 +55,7 @@ class UserProfile extends React.Component {
           <FormInput
             type="text"
             name="First Name"
-            placeholder={this.props.currentUser.firstName === undefined ? "Enter Your First Name" : this.props.currentUser.firstName }
+            placeholder={this.props.currentUser.firstName === null ? "Enter Your First Name" : this.props.currentUser.firstName }
             onChange={(event) => (this.firstName = event.target.value)}
             label="First Name"
             required
@@ -64,7 +64,7 @@ class UserProfile extends React.Component {
           <FormInput
             type="text"
             name="Last Name"
-            placeholder={this.props.currentUser.lastName === undefined ? "Enter Your Last Name" : this.props.currentUser.lastName }
+            placeholder={this.props.currentUser.lastName === null ? "Enter Your Last Name" : this.props.currentUser.lastName }
             onChange={(event) => (this.lastName = event.target.value)}
             label="Last Name"
             required
