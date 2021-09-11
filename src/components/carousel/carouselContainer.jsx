@@ -35,7 +35,7 @@ const CarouselContainer = (props) => {
             <Carousel.Item key={index} >
     <div  className="feature-carousel"
           
-          style={{ backgroundImage: `url(${imageUrl})` }} 
+          style={{ backgroundImage: `url(${previewMovie.movieBanerUrl == null ?imageUrl2:previewMovie.movieBanerUrl })` }} 
             >
 
                 <div className="overlay ">

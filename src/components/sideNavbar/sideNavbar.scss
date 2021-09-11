@@ -1,7 +1,7 @@
 .side_navbar {
     position: fixed;
     top: 0;
-    left: 0;
+   
     height: 100%;
     width: 65px;
     background-color: #11101d;
@@ -11,6 +11,8 @@
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;
     z-index: 100;
+
+
     .logo {
 
         i {
@@ -127,4 +129,9 @@
         background-color: #fff;
         color: #191738;
     }
+}
+
+
+.side_navbar:hover {
+    left: 0;
 }

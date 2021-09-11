@@ -8,8 +8,9 @@ import MovieCard from '../../components/reusable-Components/movie-card/movie-car
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-  { width: 768, itemsToShow: 4 },
-  { width: 1200, itemsToShow: 6 }
+    { width: 768, itemsToShow: 3 },
+   { width: 1200, itemsToShow: 4 },
+  { width: 1500, itemsToShow: 5 }
 ];
 
 
@@ -30,7 +31,7 @@ class LatestMovies extends React.Component {
             }).then(res => {
                 this.setState({
 
-                    Movies: res.data,
+                    Movies: res.data.content,
                 })
      
                 console.log(this.state.Movies)
@@ -56,7 +57,7 @@ class LatestMovies extends React.Component {
          { this.state.Movies.map((item,index) => (
              <div key={index}>
                  
-            <MovieCard/>
+            <MovieCard movie={item} />
 
             </div>
           ))}

@@ -1,0 +1,23 @@
+.categories {
+
+    padding-left: 120px;
+    height: 100%;
+    width: 90%;
+    padding-top: 50px;
+    display: flex;
+    position: relative;
+    color: white;
+
+
+    .category-movie-list {
+        width: 90%;
+        height: 100%;
+    }
+
+    .category-list{
+     
+        right: 10%;
+        top: 15%;
+
+    }
+}

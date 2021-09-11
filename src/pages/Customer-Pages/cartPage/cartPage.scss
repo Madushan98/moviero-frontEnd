@@ -1,0 +1,183 @@
+$desktop: 1200px;
+$tab1: 1000px;
+$tab2: 600px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content ;
+
+
+    }
+
+}
+
+@mixin tab1 {
+    @media (min-width: #{$tab1}) {
+        @content ;
+
+
+    }
+}
+
+@mixin tab2 {
+    @media (min-width: #{$tab2}) {
+        @content ;
+
+
+    }
+}
+
+
+.cart-page {
+    padding-left: 100px;
+    display: block;
+    width: 90%;
+    margin: 100px 20px 150px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+    @include tab1 {
+        padding-left: 150px;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+
+    .cart-table {
+        border-collapse: collapse;
+        width: 500px;
+        background: #ffffff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+
+        th {
+
+            text-align: left;
+            padding: 8px;
+            
+        }
+
+       
+
+        .data-row {
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: bold;
+
+
+            .table-data-1 {
+
+
+                text-align: left;
+                height: 170px;
+                width: 150px;
+               
+
+                .movie-img {
+
+                    margin: 10px;
+                    width: 80px;
+                    height: 120px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    border-radius: 10px
+                }
+
+
+            }
+
+            .table-data-2 {
+
+
+                text-align: left;
+
+                font-size: 16px;
+                width: 200px;
+                padding: 8px;
+
+
+                .cart-remove-button {
+                    background: #170928;
+                    font-family: 'Montserrat', sans-serif;
+                    font-style: normal;
+                    font-weight: bold;
+                    color: white;
+                    font-size: 16px;
+                    border-radius: 6px;
+                    width: 100px;
+                    height: 25px;
+                    padding-left: 10px;
+                    margin-top: 20px;
+                    cursor: pointer;
+                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            .table-data-3 {}
+        }
+
+
+
+
+    }
+
+    .cart-checkOut {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+        height: 250px;
+
+        @include tab1 {
+            padding: 20px;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summery {
+            font-size: 26px;
+            line-height: 24px;
+
+            color: #000000;
+
+        }
+
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 26px;
+            line-height: 14px;
+            height: 64px;
+            padding: 0 10px 010px;
+        }
+
+        .cart-checkOut-button {
+            margin-top: 30px;
+            background: #170928;
+            border-radius: 12px;
+            font-size: 26px;
+            line-height: 14px;
+            height: 50px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+}

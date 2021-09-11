@@ -3,10 +3,9 @@ import React from "react";
 import "./userProfile.scss";
 import FormInput from "../../../components/reusable-Components/sign-input/sign-input.component";
 import { connect } from "react-redux";
-import store from "../../../redux/store";
 import { updateUser } from "../../../redux/user/user.action";
 import { Link } from "react-router-dom";
-
+import store from "../../../redux/store";
 class UserProfile extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();

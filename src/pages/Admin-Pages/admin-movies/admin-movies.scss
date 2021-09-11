@@ -1,0 +1,45 @@
+.admin-movieList {
+    padding-left: 100px;
+    padding-top: 50px;
+    width: 95%;
+
+    .admin-movieList-title {
+        padding: 20px;
+    }
+
+    .admin-movieList-table {
+        padding: 20px;
+
+        th {
+            height: 60px;
+            padding-bottom: 20px;
+            padding-left: 10px;
+            background-color: rgb(219, 212, 212);
+            margin-bottom: 10px;
+        }
+
+        td {
+            font-family: 'Nunito Sans', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            height: 50px;
+
+            a {
+                color: rgb(255, 255, 255);
+            }
+        }
+    }
+
+
+
+    .movie-list-pagination {
+        height: 80px;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        width: 100%;
+        
+  
+ 
+    }
+}

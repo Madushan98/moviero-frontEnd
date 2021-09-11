@@ -50,15 +50,15 @@ class AdminSideNavBar extends React.Component {
                         </Link>
 
 
-                        <span className='tip'></span>
+                        <span className='tip'>Add Movie</span>
                     </li>
                     <li>
-                        <Link to="/newMovie">
-                           <i class='bx bx-user-minus' ></i>
+                        <Link to="/movieList">
+                           <i class='bx bx-list-check'></i>
 
 
                         </Link >
-                        <span className='tip'>Add Movie</span>
+                        <span className='tip'>Movie List</span>
                     </li>
                     <li>
                         <Link to="/user">

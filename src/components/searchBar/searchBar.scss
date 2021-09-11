@@ -1,0 +1,116 @@
+$desktop: 1000px;
+$tab: 700px;
+
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content ;
+
+
+    }
+}
+
+@mixin tab {
+    @media (min-width: #{$tab}) {
+        @content ;
+
+
+    }
+}
+
+.searchBox {
+    height: 80px;
+    width: 100%;
+    columns: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+
+    @include tab {
+        height: 80px;
+        width: 100%;
+        columns: black;
+        display: flex;
+        flex-direction: row;
+
+        padding-left: 30%;
+    }
+
+    @include desktop {
+        height: 80px;
+        width: 100%;
+        columns: black;
+        display: flex;
+        flex-direction: row;
+
+
+    }
+
+    .search-input {
+
+
+
+        i {
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        input {
+            background-color: #f5f5f5;
+            padding: 6px;
+            margin: 5px;
+            font-size: 16px;
+            border: black;
+            color: white;
+            font-weight: 600;
+
+        }
+
+        // input {
+        //     color: rgb(255, 255, 255);
+        //     font-family: Tahoma;
+        //     font-style: normal;
+        //     font-weight: bold;
+        //     font-size: 16px;
+        //     line-height: 26px;
+        //     background: #2f3133;
+        //     box-sizing: border-box;
+
+        //     width: 90%;
+        //     height: 40px;
+        // }
+
+
+
+
+    }
+
+    .search-filter {
+        display: none;
+
+        @include tab {
+            margin: 5px;
+            display: inline-block;
+        }
+    }
+
+    .search-button {
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            margin: 5px;
+            margin-right: 16px;
+            background: rgb(245, 245, 245);
+            font-size: 17px;
+            border: black;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background: #ccc;
+        }
+
+    }
+}

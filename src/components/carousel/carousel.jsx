@@ -22,7 +22,7 @@ class Carousel extends React.Component {
             }).then(res => {
                 this.setState({
 
-                    previewMovies: res.data,
+                    previewMovies: res.data.content,
                 })
      
                 console.log(this.state.previewMovies)
