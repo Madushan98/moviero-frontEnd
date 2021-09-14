@@ -21,7 +21,7 @@ class MoviesList extends React.Component {
     } else {
        return (
       <section className="movie-list">
-        <div className="movie-list-title">Category</div>
+       
         <div className="movie-list-movies">
           <Row xs={1}  md={2} lg={3} xl={4}>
             {this.props.Movies.map((item, index) => (

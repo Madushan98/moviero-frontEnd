@@ -85,7 +85,7 @@ setTimeout(() => {
            
             {moviesInCart .map((movie, index) => (
             
-                <tr className="data-row">
+                <tr className="data-row" key={index}>
               <td className="table-data-1">
                 <div
                   className="movie-img"

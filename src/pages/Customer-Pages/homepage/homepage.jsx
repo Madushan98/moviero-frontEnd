@@ -9,7 +9,7 @@ import store from "../../../redux/store";
 
 
 import Carousel  from '../../../components/carousel/carousel';
-import SearchBar from "../../../components/searchBar/searchBar"
+import SearchBar from "../../../components/reusable-Components/searchBar/searchBar";
 import LatestMovies from '../../../components/latest-movies/lateset-movies'
 // Import Swiper styles
 

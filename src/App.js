@@ -11,47 +11,55 @@ import SideNavBar from "./components/sideNavbar/sideNavbar";
 import { connect } from "react-redux";
 import store from "./redux/store";
 import { logUser } from "./redux/user/user.action";
+import { setCurrentRole, fetchUserRoles } from "./redux/userRole/userRole.action";
 import Categories from "./pages/Customer-Pages/categoriesPage/categoriesPage";
 import UserPasswordReset from "./pages/Customer-Pages/UserPasswordReset/UserPasswordReset";
 import UserProfile from "./pages/Customer-Pages/user-profile/userProfile";
 import AdminPage from "./pages/Admin-Pages/admin-home/admin-home";
-import AdminSideNavBar from "./components/admin-sideNavbar/adminSideNavBar";
 import Cart from "./pages/Customer-Pages/cartPage/cartPage";
 import MoviePage from "./pages/Customer-Pages/movieProductPage/movieProductPage";
 import AdminMovieList from './pages/Admin-Pages/admin-movies/admin-movies'
+import PlayerPage from "./pages/Customer-Pages/playerPage/playerPage";
+import SearchResult from "./pages/Customer-Pages/SearchResultPage/searchResultPage"
+import NewMovieUpload from "./pages/Admin-Pages/newMovie-Add/newMovie";
 
 
 class App extends React.Component {
   componentDidMount() {
-    const { logUser, currentUser } = this.props;
+    const { logUser, currentUser,setCurrentRole,fetchUserRoles } = this.props;
 
     logUser();
+
+   
+ //   setCurrentRole(currentUser.userRole)
+
   }
 
   render() {
     if (this.props.loading) {
       return <div>Loading...</div>;
-    } else if (this.props.currentUser) {
+    } else if (this.props.currentUser ) {
      
     
         return (
           <BrowserRouter>
-            <Header currentUser={this.props.currentUser} />
+            <Header currentUser={this.props.currentUser} currentRole={ this.props.currentRole}/>
             <SideNavBar />
             <Switch>
-         
               <Route exact path="/" component={HomePage} />
               <Route exact path="/movies" component={Categories} />
-
               <Route exact path="/movie/:movieId" component={MoviePage} />
-
               <Route exact path="/user" component={UserProfile} />
+              <Route exact path="/stream" component={PlayerPage} />
+               <Route exact path="/addMovie" component={NewMovieUpload} />
+            <Route exact path="/search/:title/:sortBy" component={SearchResult} />
+
               <Route exact path="/cart" component={Cart} />
-                <Route exact path="/movieList"  render={() =>
-                  this.props.currentUser.userRole.includes("ROLE_ADMIN") ? <AdminMovieList /> : <Redirect to="/" />
+                <Route exact path="/adminMovieList"  render={() =>
+                 this.props.currentRole == "ROLE_ADMIN" ? <AdminMovieList /> : <Redirect to="/" />
                 } />
                <Route exact path="/admin"  render={() =>
-                  this.props.currentUser.userRole.includes("ROLE_ADMIN") ? <AdminPage /> : <Redirect to="/" />
+                   this.props.currentRole == "ROLE_ADMIN" ? <AdminPage /> : <Redirect to="/" />
                 } />
               
               
@@ -69,6 +77,7 @@ class App extends React.Component {
                 }
               />
             </Switch>
+      
           </BrowserRouter>
         );
       
@@ -99,12 +108,15 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
     loading: state.user.loading,
+    currentRole: state.userRole.currentRole,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     logUser: () => dispatch(logUser()),
+    fetchUserRoles: () => dispatch(fetchUserRoles()),
+    setCurrentRole: () => dispatch(setCurrentRole()),
   };
 };
 

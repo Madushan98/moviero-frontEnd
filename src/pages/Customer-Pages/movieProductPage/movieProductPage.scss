@@ -28,244 +28,121 @@ $table: 700px;
     position: relative;
     color: white;
 
-    .movie-container {
-        height: 100%;
-        width: 100%;
+
+
+}
+
+
+
+.movie-preview {
+
+    width: 90%;
+    height: 800px;
+    background: #11101D;
+    border-radius: 25px;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: bold;
+    padding: 40px;
+
+    .preview {
         display: flex;
+        flex-direction: row;
 
-        .movie-preview {
-            height: 400px;
-            width: 95%;
+        .preview-top {
 
-            @include desktop {
-                height: 800px;
-
-
-
-            }
-
-            .feature-preview {
+            border-radius: 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
+            width: 50%;
+            height: 450px;
 
 
-
-                overflow: hidden;
-                position: relative;
-                height: 300px;
-                width: 100%;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
-
-                @include tab {
-                    overflow: hidden;
-                    position: relative;
-                    height: 450px;
-                    width: 100%;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: cover;
-                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
-                }
-
-                @include desktop {
-                    overflow: hidden;
-                    position: relative;
-                    height: 750px;
-                    width: 100%;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: cover;
-                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
-                }
-
-                .overlay {
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    top: 0;
-                    left: 0;
-                    background: rgba(0, 0, 0, 0.65);
-                    color: white;
-                    display: flex;
-                    align-items: left;
-                    justify-content: center;
-                    flex-direction: column;
-                    padding-left: 50px;
-
-
-                    .feature-info {
-
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        justify-content: space-between;
-
-
-                        .feature-title {
-                            height: 50px;
-                            font-family: 'Nunito Sans', sans-serif;
-                            font-style: normal;
-                            font-weight: bold;
-                            font-size: 40px;
-                            line-height: 20px;
-                            color: white;
-
-
-                            @include desktop {
-                                height: 100px;
-                                font-family: 'Nunito Sans', sans-serif;
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 60px;
-                                line-height: 40px;
-                                color: white;
-                            }
-                        }
-
-
-
-                        .feature-desc {
-
-                            height: 50%;
-                            width: 90%;
-                            margin-top: 5px;
-
-                            align-items: center;
-                            text-align: left;
-                            font-family: 'Nunito Sans', sans-serif;
-                            font-style: normal;
-                            font-weight: bold;
-                            font-size: 10px;
-                            line-height: 10px;
-                            color: white;
-
-                            @include tab {
-                                height: 60%;
-                                width: 90%;
-                                margin-top: 20px;
-
-                                align-items: center;
-                                text-align: left;
-                                font-family: 'Nunito Sans', sans-serif;
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 18px;
-                                line-height: 16px;
-                                color: white;
-                            }
-
-                            @include desktop {
-                                height: 60%;
-                                width: 90%;
-                                margin-top: 50px;
-
-                                align-items: center;
-                                text-align: left;
-                                font-family: 'Nunito Sans', sans-serif;
-                                font-style: normal;
-                                font-weight: bold;
-                                font-size: 30px;
-                                line-height: 40px;
-                                color: white;
-
-                            }
-                        }
-
-
-                        .feature-rating {
-                            width: 350px;
-                            height: 100px;
-
-                            font-weight: 600;
-                            font-size: 30px;
-
-                        }
-
-                        .feature-buy {
-                            display: table;
-                            width: 150px;
-                            height: 20px;
-                            cursor: pointer;
-                            font-weight: 600;
-                            font-size: 20px;
-                            text-align: center;
-                            border: none;
-                            border-radius: 5px;
-                            font-family: 'Nunito Sans', sans-serif;
-                            background: #11101D;
-
-                            i {
-                                padding: 10px 3px 0 1px;
-                            }
-
-                            span {
-                                color: white;
-                                display: table-cell;
-                                vertical-align: middle;
-                            }
-
-                            @include desktop {
-                                display: table;
-                                width: 200px;
-                                height: 50px;
-                                cursor: pointer;
-                                font-weight: 600;
-                                font-size: 30px;
-                                text-align: center;
-                                border: none;
-                                border-radius: 5px;
-                                font-family: 'Nunito Sans', sans-serif;
-                                background: #11101D;
-
-
-                            }
-                        }
-                    }
-                }
-
-
-
-                .movie-preview-cart {
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    width: 60px;
-                    height: 60px;
-                    margin: 30px;
-                    align-items: center;
-                    justify-content: center;
-                    display: flex;
-                    background: #11101D;
-                    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-                    border-radius: 10px;
-                    cursor: pointer;
-
-                    i {
-                        font-size: 30px;
-                    }
-
-                    i:hover {
-
-                        color: rgb(7, 29, 124);
-                    }
-
-                }
-
-                .movie-preview-cart:hover {
-                    }
-
-                }
-
-
-                .movie-details {
-                    width: 40%;
-                    color: black;
-
-                    padding: 20px;
-                }
-
-            }
         }
 
+
+
+        .preview-title {
+
+            padding-left: 40px;
+            padding-top: 30%;
+
+
+            .title {
+
+                font-size: 40px;
+                line-height: 40px;
+                letter-spacing: 0.02em;
+            }
+
+            .year {
+                padding-top: 15px;
+                font-size: 28px;
+                line-height: 28px;
+                letter-spacing: 0.02em;
+
+            }
+
+            .category {
+                padding-top: 10px;
+                font-size: 24px;
+                line-height: 28px;
+                letter-spacing: 0.02em;
+
+                color: #D72525;
+
+            }
+
+            .price {
+                padding-top: 20px;
+                font-size: 34px;
+                line-height: 30px;
+                letter-spacing: 0.02em;
+
+            }
+
+
+        }
+
+
+        .cart-button {
+            margin: 20px 40px;
+            background: #000000;
+            border-radius: 10px;
+            padding-top: 10px;
+            text-align: center;
+            height: 40px;
+            width: 80%;
+            cursor: pointer;
+        }
+
+        .buy-button {
+            margin: 10px 40px 10px 40px;
+            background: #000000;
+            border-radius: 10px;
+            padding-top: 10px;
+            text-align: center;
+            height: 40px;
+            width: 80%;
+            cursor: pointer;
+        }
     }
+
+    .preview-description {
+
+        margin-top: 10px;
+        padding-top: 30px;
+
+        .plot {
+
+            font-size: 36px;
+            line-height: 42px;
+            letter-spacing: 0.02em;
+        }
+    }
+
+
+
+}

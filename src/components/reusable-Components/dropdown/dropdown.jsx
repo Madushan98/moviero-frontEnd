@@ -2,16 +2,29 @@ import React from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 
-const DropDownComponent = () => {
+const DropDownComponent = (props) => {
 
 
 
+    const { onFilter, categories, title } = props;
+
+    console.log(categories);
     return (
         <div>
-            <DropdownButton size="small" id="dropdown-basic-button" title="Choose">
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            <DropdownButton size="small" id="dropdown-basic-button" title={title}>
+                {
+                    categories.map((category,index) => {
+
+                        return (
+                            <Dropdown.Item key={index} onClick={()=> onFilter(category.categoryName)} >{ category.categoryName}</Dropdown.Item>
+
+                      )
+
+                    })
+                
+                
+                }
+   
     </DropdownButton>
         </div>
     )

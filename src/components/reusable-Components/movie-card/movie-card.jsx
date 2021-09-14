@@ -54,7 +54,7 @@ const imageUrl = "https://i.ibb.co/bdfMq7q/Romance.jpg";
   }}
 >
  
-                  <div className="movie-img"  style={{ backgroundImage: `url(${imageUrl})` }} >
+                  <div className="movie-img"  style={{ backgroundImage: `url(${movie.movieImageUrl ? movie.movieImageUrl :imageUrl})` }} >
               
             </div>
 </Link>
@@ -103,91 +103,3 @@ export default connect(mapStateToProps, null)(MovieCard);
 
 
 
-
-// const MovieCard = ({movie}) => {
-
-    
-
-//   const imageUrl = "https://i.ibb.co/bdfMq7q/Romance.jpg";
-//     return (
-//         <div className="movie-Card">
-
-//             <Link
-//   to={{
-//     pathname: `/movie/${movie.movieId}`,
-  
-//   }}
-// >
- 
-//                   <div className="movie-img"  style={{ backgroundImage: `url(${imageUrl})` }} >
-              
-//             </div>
-// </Link>
-
-         
-          
-
-//             <div className="movie-detail">
-//  <div className="movie-desc">
-//                 <div className="movie-title">
-//                     {movie.title}
-//                 </div>
-//                 <div className="movie-category">
-//                     {movie.movieCategory}
-//                 </div>
-//                 <div className="movie-price">
-//                     ${movie.moviePrice}
-//                  </div>
-//                 </div>
-//                  <div className="movie-cart">
-//                    <span>Add to Cart</span> 
-//             </div>
-//             </div>
-           
-
-            
-//         </div>
-//     )
-// }
-
-
-
-
-
-
-
-// addtoCart(cartId,userId){
-
-//     const url = "http://localhost:8000/users/" + userId + "/cart/" + cartId;
-// setTimeout(() => {
-
-            
-
-//             const userId = localStorage.getItem('userId')
-
-//             const userUrl = 'users/' + userId;
-
-//  axios.put(userUrl, user,{
-//                 headers: {
-//                     Authorization: localStorage.getItem('token'), //here remove + in template litereal
-//                 },
-//             })
-//      .then(response => {
-//           const updatedUser = response.data;
-//                 dispatch(setCurrentUser(updatedUser));
-//                 dispatch(fetchCurrentUser());
-         
-         
-       
-//      })
-//         .catch(error => {
-         
-//                     dispatch(fetchErrorMessage(error.message));
-//                     dispatch(fetchCurrentUser());
-//             console.error('There was an error!', error);
-//         });  
-
-//         }
-//     , 100)
-
-// }

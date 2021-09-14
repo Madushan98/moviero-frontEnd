@@ -1,13 +1,9 @@
 import React from "react";
-import {Link, Route } from "react-router-dom";
 import "./categoriesPage.scss";
-import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { withRouter } from "react-router";
 import axios from "axios";
-import MenuItem from "../../../components/MenuItem/menuItem";
-import { ListGroup } from "react-bootstrap";
 import MoviesList from "../../../components/movieList/moviesList"
 import CategoryList from "../../../components/categoryList/categoryList"
-import { get } from "lodash";
 class Categories extends React.Component {
   state = {
     Categories: [],

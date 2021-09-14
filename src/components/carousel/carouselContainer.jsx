@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Carousel} from 'react-bootstrap'
-
+import {Link} from 'react-router-dom'
 
 
 const CarouselContainer = (props) => {
@@ -35,7 +35,7 @@ const CarouselContainer = (props) => {
             <Carousel.Item key={index} >
     <div  className="feature-carousel"
           
-          style={{ backgroundImage: `url(${previewMovie.movieBanerUrl == null ?imageUrl2:previewMovie.movieBanerUrl })` }} 
+          style={{ backgroundImage: `url(${previewMovie.movieBanerUrl })` }} 
             >
 
                 <div className="overlay ">
@@ -45,7 +45,17 @@ const CarouselContainer = (props) => {
                   <div className="feature-desc"> { previewMovie.description }</div>
 
                         <div className="more-info">
+
+                      
+            <Link
+  to={{
+    pathname: `/movie/${previewMovie.movieId}`,
+  
+  }}
+>
                          <span>More Info</span>
+
+                         </Link>
             </div>
 
                 </div>

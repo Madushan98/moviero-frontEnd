@@ -1,13 +1,56 @@
 import React from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import "./movieProductPage.scss";
-import './movies.css'
+import { connect } from "react-redux"
 
 class MoviePage extends React.Component {
   state = {
     Movie: null,
   };
+
+  addToCart(movieId,userId){
+
+
+const message = (errorMessage) => toast(errorMessage,
+    {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: true,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+})
+
+
+    const url = "http://localhost:8000/users/" + userId + "/cart/" + movieId;
+setTimeout(() => {
+         
+ axios.put(url,{},{
+                headers: {
+                    Authorization: localStorage.getItem('token'), 
+                },
+            })
+     .then(response => {
+         
+       console.log(response);
+         
+       message("Movie Is Added to Cart");
+     })
+        .catch(error => {
+         
+                  message("Please Try Again");  
+            console.error('There was an error!', error);
+        });  
+
+        }
+    , 100)
+
+}
+
+
 
   getMovieDetails(movieId) {
     const url = "http://localhost:8000/movies/mov/" + movieId;
@@ -46,55 +89,68 @@ class MoviePage extends React.Component {
         </section>
       );
     } else {
-      const { title, movieBanerUrl, moviePrice, downloads, description,imdbRating,category } =
+      const { title, movieBanerUrl, moviePrice, downloads, description,imdbRating,movieCategory,releaseDate,movieId } =
         this.state.Movie;
       return (
         <section className="movie-page">
-          <div className="movie-container">
-            <div className="movie-preview">
-             <div  className="feature-preview"
+          <div>
+        <ToastContainer />
+      </div>
           
-          style={{ backgroundImage: `url(${movieBanerUrl })` }} 
-            >
 
-                <div className="overlay ">
-                  <div className="feature-info">
 
-                  <div className="feature-title">{title}</div>
-                  <div className="feature-desc"> { description }</div>
+          <div className="movie-preview"> 
 
-                                  <div className="feature-rating">
-                                      <i class='bx bxs-star' ></i>
-                                      
-                         <span> {imdbRating}/10</span>
-            </div>         
-                   
-                                  <div className="feature-buy">
-                                        <i class='bx bx-play-circle'></i>      
-                         <span>Buy Now</span>
+            <div className="preview"> 
+            <div className="preview-top"   style={{ backgroundImage: `url(${movieBanerUrl })` }} >
+             
             </div>
-
+            <div>
+              <div className="preview-title"> 
+                <div className="title">
+                  {title}
                 </div>
-                
+                <div className="year">
+                  {releaseDate}
                 </div>
-  
-                          <div className="movie-preview-cart">
-                              <i class='bx bxs-cart-alt'></i>
+                 <div className="category">
+                  {movieCategory}
+                  </div>
+                   <div className="price">
+                  ${moviePrice}
+                </div>
               </div>
-         
-        </div>
-                  
-            </div>
-                  <div className="movie-details">
-                    
+
+                <div className="cart-button" onClick={() => this.addToCart(movieId,this.props.currentUser.userId)}>
+                  Add To Cart
+                </div>
+                <div className="buy-button">
+                  Buy the Movie
+                </div>
+</div>
+      
+
+
   </div>
+              
+              <div className="preview-description">
+              <div className="plot">
+                Plot
+                <hr></hr>
+                </div>
+
+            <div className="description" >
+              {description}
+              </div>
             
-          </div>
+            </div>
+            </div>
+
+
+
+            
         
-          <div className="movie-related"></div>
-          
-              
-              
+
 
           </section>
       );
@@ -102,4 +158,12 @@ class MoviePage extends React.Component {
   }
 }
 
-export default MoviePage;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+   
+  };
+};
+
+
+export default connect(mapStateToProps,null)(MoviePage);

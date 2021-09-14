@@ -2,6 +2,15 @@ $desktop: 1000px;
 $tab: 700px;
 
 
+
+.btn-primary {
+    color: #fff;
+    background-color: #0b1320;
+
+    border-color: #1a3055;
+
+}
+
 @mixin desktop {
     @media (min-width: #{$desktop}) {
         @content ;
@@ -26,6 +35,9 @@ $tab: 700px;
     flex-direction: row;
     justify-content: flex-end;
 
+    i {
+        color: #000;
+    }
 
     @include tab {
         height: 80px;
@@ -62,7 +74,7 @@ $tab: 700px;
             margin: 5px;
             font-size: 16px;
             border: black;
-            color: white;
+            color: rgb(0, 0, 0);
             font-weight: 600;
 
         }

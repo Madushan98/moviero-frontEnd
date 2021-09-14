@@ -1,12 +1,12 @@
 .navBar-top {
-  
+
     z-index: 1;
-  
-    background-color:white;
+
+    background-color: white;
     // position: fixed;
     // width: 100%;
-    
-    padding: 25px 50px 25px 50px;
+
+    padding: 25px 50px 25px 40px;
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -41,12 +41,26 @@
         line-height: 12px;
         text-align: center;
         letter-spacing: 0.065em;
+        display: flex;
+        flex-direction: row;
+        width: 150px;
+        justify-content: space-between;
+        align-items: center;
+
+
+        a {
+           
+            text-decoration: none;
+
+        }
 
         h1 {
+            color: #11101d;
             font-family: 'Roboto Mono', monospace;
             font-style: normal;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
+
         }
 
     }
