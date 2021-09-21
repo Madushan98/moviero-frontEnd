@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./signup.css";
 import FormInput from "../../components/reusable-Components/sign-input/sign-input.component";
-
+import {withRouter} from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 class Signup extends React.Component {
@@ -21,6 +21,8 @@ class Signup extends React.Component {
         .post("users", user)
         .then((res) => {
           console.log(res);
+
+           this.props.history.push('/signin');
         })
         .catch((err) => {
           console.log(err);
@@ -91,4 +93,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

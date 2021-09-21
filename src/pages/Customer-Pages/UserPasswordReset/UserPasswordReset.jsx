@@ -30,8 +30,11 @@ class UserPasswordReset extends React.Component {
   render() {
     return (
       <div className="user-password-reset">
+        <div className="password-reset-container">
+
         <div>
-          <h2>Enter Your new Password</h2>
+            <h3>Enter Your new Password</h3>
+            <hr></hr>
         </div>
         <FormInput
           type="password"
@@ -53,8 +56,13 @@ class UserPasswordReset extends React.Component {
           className="submit-button"
           type="submit"
           onClick={this.handleSubmit}
-        >Change Password</button>
-      </div>
+          >Change Password</button>
+          
+        </div>
+
+        </div>
+        
+            
     );
   }
 }

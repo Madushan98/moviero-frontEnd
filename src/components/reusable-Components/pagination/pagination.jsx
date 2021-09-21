@@ -15,8 +15,15 @@ const PaginationComponent = (props) => {
 
   return (
     <section>
-      <Pagination size="lg">
-              {
+      <Pagination >
+
+         <Pagination.First onClick={() => onPageChange(1)}/>
+   <Pagination.Prev onClick={() => onPageChange( currentPage)} /> 
+ 
+
+        {
+          
+
                   pages.map(page => {
 
                       if (currentPage + 1 === page) {
@@ -35,7 +42,12 @@ const PaginationComponent = (props) => {
            
                       
                   }  )
-       }
+        }
+        
+  
+  <Pagination.Next onClick={() => onPageChange(currentPage+2)}/> 
+  <Pagination.Last onClick={() => onPageChange(pages.length)}/>
+
       </Pagination>
     </section>
   );

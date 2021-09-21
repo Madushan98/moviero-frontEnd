@@ -10,6 +10,54 @@ class MoviePage extends React.Component {
     Movie: null,
   };
 
+
+
+  buyMovie(movieId,userId) {
+   const message = (errorMessage) => toast(errorMessage,
+    {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: true,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,})
+ 
+    
+    const url = "http://localhost:8000/users/" + userId + "/purches";
+    
+    const movies = {
+
+      movies : [movieId]
+    }
+setTimeout(() => {
+         
+ axios.put(url,movies,{
+                headers: {
+                    Authorization: localStorage.getItem('token'), 
+                },
+            })
+     .then(response => {
+         
+       console.log(response);
+         
+       message("Buy SuccessFul");
+     })
+        .catch(error => {
+         
+                  message("Please Try Again");  
+            console.error('There was an error!', error);
+        });  
+
+        }
+    , 100)
+
+    
+
+
+  }
+
+
   addToCart(movieId,userId){
 
 
@@ -25,7 +73,7 @@ progress: undefined,
 })
 
 
-    const url = "http://localhost:8000/users/" + userId + "/cart/" + movieId;
+    const url = "users/" + userId + "/cart/" + movieId;
 setTimeout(() => {
          
  axios.put(url,{},{
@@ -82,6 +130,9 @@ setTimeout(() => {
   }
 
   render() {
+
+
+     const imageUrl = "https://i.ibb.co/SwrbMP3/s-2.jpg";
     if (this.state.Movie === null) {
       return (
         <section className="movie-page">
@@ -102,7 +153,7 @@ setTimeout(() => {
           <div className="movie-preview"> 
 
             <div className="preview"> 
-            <div className="preview-top"   style={{ backgroundImage: `url(${movieBanerUrl })` }} >
+            <div className="preview-top"   style={{ backgroundImage: `url(${movieBanerUrl ?movieBanerUrl : imageUrl })` }} >
              
             </div>
             <div>
@@ -124,7 +175,7 @@ setTimeout(() => {
                 <div className="cart-button" onClick={() => this.addToCart(movieId,this.props.currentUser.userId)}>
                   Add To Cart
                 </div>
-                <div className="buy-button">
+                <div className="buy-button"   onClick={() => this.buyMovie(movieId,this.props.currentUser.userId)}>
                   Buy the Movie
                 </div>
 </div>

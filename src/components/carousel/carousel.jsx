@@ -20,9 +20,12 @@ class Carousel extends React.Component {
                     Authorization: localStorage.getItem('token'),
                 },
             }).then(res => {
+
+                const shuffled = res.data.content.sort(() => 0.5 - Math.random());
+
                 this.setState({
 
-                    previewMovies: res.data.content,
+                    previewMovies: shuffled.slice(0, 5)
                 })
      
                 console.log(this.state.previewMovies)
@@ -35,6 +38,7 @@ class Carousel extends React.Component {
     }
 
     render() {
+       
         return (
             <div className="my__carousel_main">
                 <CarouselContainer previewMovies={this.state.previewMovies} />

@@ -38,8 +38,11 @@ class UserProfile extends React.Component {
     } else {
       return (
         <div className="user-profile">
+
+          <div className="user-profile-container">
           <div>
-            <h2>Hello Madushan!</h2>
+              <h3>Change User Profile Details...</h3>
+              <hr></hr>
           </div>
 
           <FormInput
@@ -90,7 +93,8 @@ class UserProfile extends React.Component {
             
             To change your password
             <Link to="/user/changePassword">Click Here!</Link>
-          </div>
+            </div>
+            </div>
         </div>
       );
     }

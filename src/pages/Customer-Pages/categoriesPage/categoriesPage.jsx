@@ -2,8 +2,9 @@ import React from "react";
 import "./categoriesPage.scss";
 import { withRouter } from "react-router";
 import axios from "axios";
-import MoviesList from "../../../components/movieList/moviesList"
-import CategoryList from "../../../components/categoryList/categoryList"
+import MoviesList from "../../../components/reusable-Components/movieList/moviesList";
+import CategoryList from "../../../components/categoryList/categoryList";
+import SearchBar from "../../../components/reusable-Components/searchBar/searchBar";
 class Categories extends React.Component {
   state = {
     Categories: [],
@@ -11,14 +12,11 @@ class Categories extends React.Component {
     url: "http://localhost:8000/movies",
     Movies: [],
     currentPage: 0,
-     PageCount: 0,
+    PageCount: 0,
   };
 
   getMovies(url) {
-
     console.log(url);
-
-    this.setState({ loading: true });
 
     setTimeout(() => {
       axios
@@ -41,8 +39,6 @@ class Categories extends React.Component {
         });
     }, 500);
   }
-
-
 
   componentDidMount() {
     setTimeout(
@@ -68,64 +64,75 @@ class Categories extends React.Component {
       500
     );
 
-     const url =
-      "http://localhost:8000/movies/" + this.state.selectedCategory + "/?page=" +
+    const url =
+      "http://localhost:8000/movies/" +
+      this.state.selectedCategory +
+      "/?page=" +
       this.state.currentPage +
       "&limit=8";
 
     this.getMovies(url);
   }
 
+  onCategoryChange = (category) => {
+    this.setState({
+      selectedCategory: category,
+      currentPage: 0,
+    });
+    console.log(this.state.selectedCategory);
 
-   onCategoryChange = (category) => {
-   
-
-     this.setState({
-       selectedCategory: category,
-      currentPage : 0,
-     });
-     console.log(this.state.selectedCategory);
-     
-       const url =
-      "http://localhost:8000/movies/" + category + "/?page=" +
+    const url =
+      "http://localhost:8000/movies/" +
+      category +
+      "/?page=" +
       this.state.currentPage +
       "&limit=8";
-    
-       console.log(url);
+
+    console.log(url);
     this.getMovies(url);
+  };
 
-  }
-
-
- handlePageChange = (page) => {
+  handlePageChange = (page) => {
     this.setState({ currentPage: page - 1 });
     const pageNumber = page - 1;
-    
-    const urll =
-      "http://localhost:8000/movies/"+ this.state.selectedCategory + "?page=" + pageNumber + "&limit=8";
 
- 
-    
+    const urll =
+      "http://localhost:8000/movies/" +
+      this.state.selectedCategory +
+      "?page=" +
+      pageNumber +
+      "&limit=8";
+
     this.getMovies(urll);
   };
 
-
   render() {
     const { match, history } = this.props;
-   
 
- 
     return (
-        <section className="categories">
+      <section className="category-page" >
+            <SearchBar />
+        <div className="categories">
 
-            <div className="category-movie-list">
-                <MoviesList Movies={this.state.Movies}  currentPage={this.state.currentPage} handlePageChange={this.handlePageChange}  PageCount={this.state.PageCount}  />
-            </div>
-            <div className="category-list">
-        
-          <CategoryList  onChangeCategory={this.onCategoryChange} Categories={this.state.Categories} selectedCategory={this.state.selectedCategory} />
+
+      
+    
+        <div className="category-movie-list">
+          <MoviesList
+            Movies={this.state.Movies}
+            currentPage={this.state.currentPage}
+            handlePageChange={this.handlePageChange}
+            PageCount={this.state.PageCount}
+          />
+        </div>
+        <div className="category-list">
+          <CategoryList
+            onChangeCategory={this.onCategoryChange}
+            Categories={this.state.Categories}
+            selectedCategory={this.state.selectedCategory}
+          />
+        </div>
           </div>
-        
       </section>
     );
   }

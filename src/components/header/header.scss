@@ -1,15 +1,19 @@
 .navBar-top {
 
     z-index: 1;
-
-    background-color: white;
+    top: 0;
+    background-color: rgb(255, 255, 255);
     // position: fixed;
     // width: 100%;
-
-    padding: 25px 50px 25px 40px;
-    height: 70px;
+    width: 100%;
+   
+    padding: 15px 50px 25px 40px;
+    height: 65px;
     display: flex;
     justify-content: space-between;
+   
+   
+
 
     .title {
         padding: 0 60px;
@@ -36,6 +40,32 @@
 
     }
 
+
+    .end-title1 {
+        padding-top: 5px;
+        line-height: 12px;
+        text-align: center;
+        letter-spacing: 0.065em;
+        display: flex;
+        flex-direction: row;
+        width: 120px;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            color: #11101d;
+            font-family: 'Roboto Mono', monospace;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            padding-right: 15px;
+        }
+
+
+    }
+
+
+
     .end-title {
         padding-top: 5px;
         line-height: 12px;
@@ -43,13 +73,13 @@
         letter-spacing: 0.065em;
         display: flex;
         flex-direction: row;
-        width: 150px;
+        width: 160px;
         justify-content: space-between;
         align-items: center;
 
 
         a {
-           
+
             text-decoration: none;
 
         }

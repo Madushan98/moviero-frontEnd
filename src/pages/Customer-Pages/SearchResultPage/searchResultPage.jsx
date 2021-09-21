@@ -1,7 +1,7 @@
 
 import React from "react";
 import axios from "axios";
-import MoviesList from "../../../components/movieList/moviesList"
+import MoviesList from "../../../components/reusable-Components/movieList/moviesList"
 
 import './searchResultPage.scss'
 

@@ -42,12 +42,15 @@ class PlayVideo extends Component {
     }
  
     render() {
+
+
+        const {title,movieVideoUrl,movieImageUrl,movieBannerUrl } =  this.props.playMovie;
         return (
             <div>
                 <VideoPlayer
                     controls={true}
-                    src={this.state.video.src}
-                    poster={this.state.video.poster}
+                    src={movieVideoUrl}
+                    poster={movieBannerUrl}
                     width="1500"
                     height="700"
                     onReady={this.onPlayerReady.bind(this)}

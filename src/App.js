@@ -15,18 +15,19 @@ import { setCurrentRole, fetchUserRoles } from "./redux/userRole/userRole.action
 import Categories from "./pages/Customer-Pages/categoriesPage/categoriesPage";
 import UserPasswordReset from "./pages/Customer-Pages/UserPasswordReset/UserPasswordReset";
 import UserProfile from "./pages/Customer-Pages/user-profile/userProfile";
-import AdminPage from "./pages/Admin-Pages/admin-home/admin-home";
+import AdminPage from "./pages/Admin-Pages/admin-home/adminHome";
 import Cart from "./pages/Customer-Pages/cartPage/cartPage";
 import MoviePage from "./pages/Customer-Pages/movieProductPage/movieProductPage";
-import AdminMovieList from './pages/Admin-Pages/admin-movies/admin-movies'
+import AdminMovieList from './pages/Admin-Pages/admin-movies/adminMovies'
 import PlayerPage from "./pages/Customer-Pages/playerPage/playerPage";
 import SearchResult from "./pages/Customer-Pages/SearchResultPage/searchResultPage"
 import NewMovieUpload from "./pages/Admin-Pages/newMovie-Add/newMovie";
-
+import MovieDetialEdit from "./pages/Admin-Pages/admin-movie-edit/adminMovieEdit"
+import MovieDetailsEdit from "./pages/Admin-Pages/admin-movie-edit/adminMovieEdit";
 
 class App extends React.Component {
   componentDidMount() {
-    const { logUser, currentUser,setCurrentRole,fetchUserRoles } = this.props;
+    const { logUser } = this.props;
 
     logUser();
 
@@ -46,12 +47,14 @@ class App extends React.Component {
             <Header currentUser={this.props.currentUser} currentRole={ this.props.currentRole}/>
             <SideNavBar />
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/"  render={() =>
+                 this.props.currentRole == "ROLE_CUSTOMER" ? <HomePage /> : <Redirect to="/admin" />
+                } />
               <Route exact path="/movies" component={Categories} />
               <Route exact path="/movie/:movieId" component={MoviePage} />
               <Route exact path="/user" component={UserProfile} />
               <Route exact path="/stream" component={PlayerPage} />
-               <Route exact path="/addMovie" component={NewMovieUpload} />
+            
             <Route exact path="/search/:title/:sortBy" component={SearchResult} />
 
               <Route exact path="/cart" component={Cart} />
@@ -61,8 +64,17 @@ class App extends React.Component {
                <Route exact path="/admin"  render={() =>
                    this.props.currentRole == "ROLE_ADMIN" ? <AdminPage /> : <Redirect to="/" />
                 } />
-              
-              
+              <Route exact path="/addMovie"
+                render={() =>
+                   this.props.currentRole == "ROLE_ADMIN" ? <NewMovieUpload /> : <Redirect to="/" />
+                }
+                
+                 />
+               <Route exact path="/edit/:movieId"
+                    component={MovieDetailsEdit}
+        
+                
+                 />
 
               <Route
                 exact

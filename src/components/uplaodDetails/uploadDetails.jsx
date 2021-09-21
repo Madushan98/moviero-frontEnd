@@ -70,7 +70,7 @@ message("SuccesFully Uploaded");
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Hello");
+
     
    
  const releasedate =  moment(this.releaseDate).format("DD/MM/YYYY") 
@@ -78,9 +78,9 @@ message("SuccesFully Uploaded");
     const movie = {
       title: this.title,
       moviePrice: this.moviePrice,
-      movieCategory: this.movieCategory,
+      movieCategory: this.movieCategory == undefined ? this.state.categories[0] : this.movieCategory,
       description: this.movieDescription,
-      movieUrl: this.props.uploadMovieUrl,
+     movieVideoUrl: this.props.uploadMovieUrl,
       releaseDate: releasedate,
       imdbRating: this.movieRating,
       movieBanerUrl: this.props.uploadBannerUrl,
@@ -194,7 +194,7 @@ message("SuccesFully Uploaded");
 
             <Button 
               variant="primary"
-              type="submit"
+              type="submit" className="button"
              
             >
               Submit

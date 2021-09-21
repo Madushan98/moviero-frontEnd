@@ -27,7 +27,7 @@ const Header = ({ currentUser }) => {
                 
             </div>
             {currentUser? (
-        <div className="end-title" >
+        <div className="end-title1" >
                 <h1>{ currentUser.userName }</h1>
 
                 <SwitchDropDown />

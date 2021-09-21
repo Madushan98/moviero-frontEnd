@@ -1,0 +1,36 @@
+.analytic-tab {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .tab-item {
+        flex: 1;
+        margin: 0px 20px;
+        -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+        padding: 30px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .tab-title {
+        font-size: 25px;
+    }
+
+
+    .tab-item-container {
+        display: flex;
+        margin: 10px 0px;
+        align-items: center;
+    }
+
+    .tab-info {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+  
+
+  
+
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import PaginationComponent from "../reusable-Components/pagination/pagination";
+import PaginationComponent from "../pagination/pagination";
 import "./movieList.scss";
 import { Row, Col } from "react-bootstrap";
-import MovieCard from "../reusable-Components/movie-card/movie-card";
+import MovieCard from "../movie-card/movie-card";
 import axios from "axios";
 class MoviesList extends React.Component {
   

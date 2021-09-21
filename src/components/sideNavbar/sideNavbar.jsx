@@ -77,7 +77,7 @@ class SideNavBar extends React.Component {
           <ul className="nav_list">
              <li>
                   <Link to="/admin">
-                   <i class='bx bxs-analyse'></i>
+                   <i className='bx bxs-analyse'></i>
                   </Link>
                   <span className="tip">Analitics</span>
                 </li>
