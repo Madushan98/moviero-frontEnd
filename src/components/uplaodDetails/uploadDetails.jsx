@@ -9,7 +9,7 @@ class UploadDetails extends React.Component {
   state = {
     message: null,
     categories: [],
-  
+    currentCategory: null,
   };
 
   getCategories() {
@@ -24,9 +24,9 @@ class UploadDetails extends React.Component {
           .then((res) => {
             this.setState({
               categories: res.data,
-             
+             currentCategory: res.data[0].categoryName
             });
-            this.movieCategory = res.data[0];
+  
           })
           .catch((err) => {
             console.error(err);
@@ -78,7 +78,7 @@ message("SuccesFully Uploaded");
     const movie = {
       title: this.title,
       moviePrice: this.moviePrice,
-      movieCategory: this.movieCategory == undefined ? this.state.categories[0] : this.movieCategory,
+      movieCategory: this.movieCategory == undefined ? this.state.currentCategory: this.movieCategory,
       description: this.movieDescription,
      movieVideoUrl: this.props.uploadMovieUrl,
       releaseDate: releasedate,
@@ -93,6 +93,7 @@ message("SuccesFully Uploaded");
 
   componentDidMount() {
     this.getCategories();
+   
   }
 
   render() {

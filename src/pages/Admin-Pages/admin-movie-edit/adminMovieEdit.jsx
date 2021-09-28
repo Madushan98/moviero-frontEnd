@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 class MovieDetailsEdit extends React.Component {
   state = {
     editable: true,
@@ -111,8 +112,7 @@ class MovieDetailsEdit extends React.Component {
       } = this.state.movie;
       return (
           <section className="edit-movie">
-                <div className="edit-movie-header">New Release Movies</div>
-          <hr></hr>
+          <TitleBar title={"Edit Movie Details"} />
           <div className="upload-info">
             <Form onSubmit={this.handleUpdate}>
               <fieldset disabled={!this.state.editable}>

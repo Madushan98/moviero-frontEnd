@@ -1,14 +1,33 @@
 import React from "react";
 import axios from "axios";
-import "./signup.css";
+import "./signUp.scss";
 import FormInput from "../../components/reusable-Components/sign-input/sign-input.component";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class Signup extends React.Component {
+
+
+
+
+
+
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Hello");
+
+      const message = (errorMessage) => toast(errorMessage,
+    {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: true,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+})
+
+   
 
     const user = {
       userName: this.userName,
@@ -22,37 +41,44 @@ class Signup extends React.Component {
         .then((res) => {
           console.log(res);
 
-           this.props.history.push('/signin');
+          this.props.history.push("/signin");
         })
         .catch((err) => {
           console.log(err);
+           message("E-mail is Already Taken");
         });
     } else {
-      alert("Password Doesnt Match");
+       message("Password Doesn't Match");
+        
     }
   };
+
+
 
   render() {
     return (
       <section className="sign-section">
-        {" "}
+          <div>
+            <ToastContainer />
+          </div>
+       
         <div className="sign-up">
           {" "}
           <div className="sign-title">
             {" "}
             <h1>Welcome to Moviero</h1>{" "}
             <h3>
-              Have an account?{" "}
-              <p>
-                {" "}
-                <Link to="/signin">Sign in</Link>
-              </p>{" "}
+              Have an account? 
+             
+                <Link to="/signin"> Sign in</Link>
+             
             </h3>{" "}
           </div>{" "}
           <form className="signup-form" onSubmit={this.handleSubmit}>
             {" "}
             <FormInput
               type="text"
+              id="username"
               name="userName"
               placeholder=" user name"
               onChange={(event) => (this.userName = event.target.value)}
@@ -61,6 +87,7 @@ class Signup extends React.Component {
             />{" "}
             <FormInput
               type="text"
+              id="email"
               name="email"
               placeholder=" Email"
               onChange={(event) => (this.email = event.target.value)}
@@ -69,6 +96,7 @@ class Signup extends React.Component {
             />{" "}
             <FormInput
               type="password"
+                id="password"
               name="password"
               placeholder=" password"
               onChange={(event) => (this.password = event.target.value)}
@@ -77,6 +105,7 @@ class Signup extends React.Component {
             />{" "}
             <FormInput
               type="password"
+                  id="confirm-password"
               name="confirm-password"
               placeholder=" confirm-password"
               onChange={(event) => (this.confirmPassword = event.target.value)}

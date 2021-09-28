@@ -1,104 +1,86 @@
 import React from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "./movieProductPage.scss";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 class MoviePage extends React.Component {
   state = {
     Movie: null,
   };
 
+  buyMovie(movieId, userId) {
+    const message = (errorMessage) =>
+      toast(errorMessage, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-
-  buyMovie(movieId,userId) {
-   const message = (errorMessage) => toast(errorMessage,
-    {
-position: "top-right",
-autoClose: 2000,
-hideProgressBar: true,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,})
- 
-    
     const url = "http://localhost:8000/users/" + userId + "/purches";
-    
+
     const movies = {
+      movies: [movieId],
+    };
+    setTimeout(() => {
+      axios
+        .put(url, movies, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          console.log(response);
 
-      movies : [movieId]
-    }
-setTimeout(() => {
-         
- axios.put(url,movies,{
-                headers: {
-                    Authorization: localStorage.getItem('token'), 
-                },
-            })
-     .then(response => {
-         
-       console.log(response);
-         
-       message("Buy SuccessFul");
-     })
-        .catch(error => {
-         
-                  message("Please Try Again");  
-            console.error('There was an error!', error);
-        });  
-
-        }
-    , 100)
-
-    
-
-
+          message("Buy SuccessFul");
+        })
+        .catch((error) => {
+          message("Please Try Again");
+          console.error("There was an error!", error);
+        });
+    }, 100);
   }
 
-
-  addToCart(movieId,userId){
-
-
-const message = (errorMessage) => toast(errorMessage,
-    {
-position: "top-right",
-autoClose: 2000,
-hideProgressBar: true,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-})
-
+  addToCart(movieId, userId) {
+    const message = (errorMessage) =>
+      toast(errorMessage, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
     const url = "users/" + userId + "/cart/" + movieId;
-setTimeout(() => {
-         
- axios.put(url,{},{
-                headers: {
-                    Authorization: localStorage.getItem('token'), 
-                },
-            })
-     .then(response => {
-         
-       console.log(response);
-         
-       message("Movie Is Added to Cart");
-     })
-        .catch(error => {
-         
-                  message("Please Try Again");  
-            console.error('There was an error!', error);
-        });  
+    setTimeout(() => {
+      axios
+        .put(
+          url,
+          {},
+          {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response);
 
-        }
-    , 100)
-
-}
-
-
+          message("Movie Is Added to Cart");
+        })
+        .catch((error) => {
+          message("Please Try Again");
+          console.error("There was an error!", error);
+        });
+    }, 100);
+  }
 
   getMovieDetails(movieId) {
     const url = "http://localhost:8000/movies/mov/" + movieId;
@@ -130,9 +112,7 @@ setTimeout(() => {
   }
 
   render() {
-
-
-     const imageUrl = "https://i.ibb.co/SwrbMP3/s-2.jpg";
+    const imageUrl = "https://i.ibb.co/SwrbMP3/s-2.jpg";
     if (this.state.Movie === null) {
       return (
         <section className="movie-page">
@@ -140,70 +120,70 @@ setTimeout(() => {
         </section>
       );
     } else {
-      const { title, movieBanerUrl, moviePrice, downloads, description,imdbRating,movieCategory,releaseDate,movieId } =
-        this.state.Movie;
+      const {
+        title,
+        movieBanerUrl,
+        moviePrice,
+        downloads,
+        description,
+        imdbRating,
+        movieCategory,
+        releaseDate,
+        movieId,
+      } = this.state.Movie;
       return (
         <section className="movie-page">
           <div>
-        <ToastContainer />
-      </div>
-          
+            <ToastContainer />
+          </div>
 
-
-          <div className="movie-preview"> 
-
-            <div className="preview"> 
-            <div className="preview-top"   style={{ backgroundImage: `url(${movieBanerUrl ?movieBanerUrl : imageUrl })` }} >
-             
-            </div>
-            <div>
-              <div className="preview-title"> 
-                <div className="title">
-                  {title}
+          <div className="movie-preview">
+            <div className="preview">
+              <div
+                className="preview-top"
+                style={{
+                  backgroundImage: `url(${
+                    movieBanerUrl ? movieBanerUrl : imageUrl
+                  })`,
+                }}
+              ></div>
+              <div>
+                <div className="preview-title">
+                  <div className="title">{title}</div>
+                  <div className="year">{releaseDate}</div>
+                  <div className="category">{movieCategory}</div>
+                  <div className="price">${moviePrice}</div>
                 </div>
-                <div className="year">
-                  {releaseDate}
-                </div>
-                 <div className="category">
-                  {movieCategory}
-                  </div>
-                   <div className="price">
-                  ${moviePrice}
-                </div>
-              </div>
 
-                <div className="cart-button" onClick={() => this.addToCart(movieId,this.props.currentUser.userId)}>
+                <div
+                  className="cart-button"
+                  onClick={() =>
+                    this.addToCart(movieId, this.props.currentUser.userId)
+                  }
+                >
                   Add To Cart
                 </div>
-                <div className="buy-button"   onClick={() => this.buyMovie(movieId,this.props.currentUser.userId)}>
+                <div
+                  className="buy-button"
+                  onClick={() =>
+                    this.buyMovie(movieId, this.props.currentUser.userId)
+                  }
+                >
                   Buy the Movie
                 </div>
-</div>
-      
+              </div>
+            </div>
 
-
-  </div>
-              
-              <div className="preview-description">
+            <div className="preview-description">
               <div className="plot">
                 Plot
                 <hr></hr>
-                </div>
-
-            <div className="description" >
-              {description}
               </div>
-            
+
+              <div className="description">{description}</div>
             </div>
-            </div>
-
-
-
-            
-        
-
-
-          </section>
+          </div>
+        </section>
       );
     }
   }
@@ -212,9 +192,7 @@ setTimeout(() => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-   
   };
 };
 
-
-export default connect(mapStateToProps,null)(MoviePage);
+export default connect(mapStateToProps, null)(MoviePage);

@@ -4,6 +4,7 @@ import PlayVideo from "../../../components/videoPlayer/videoPlayer";
 import "./playerPage.scss";
 import StreamMovieCard from '../../../components/reusable-Components/stream-movie-card/streamMovieCard'
 import axios from 'axios'
+import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 class PlayerPage extends React.Component {
 
     state = {
@@ -92,10 +93,7 @@ setTimeout(() => {
           this.state.currentPlay == null ? (<div></div> )
         
         :  (  <div className="now-playing">
-<div >
-            Now Playing
-            <hr></hr>
-          </div>
+ <TitleBar title="Now Playing"/>
               <PlayVideo playMovie={ this.state.currentPlay} />
         </div>)
         
@@ -109,10 +107,7 @@ setTimeout(() => {
         
         
         <div className="purchases">
-          <div className="stream-playList">
-            Stream PlayList
-            <hr></hr>
-          </div>
+        <TitleBar title="Streaming PlayList"/>
 
           {
             this.state.streamMovies.map((movie,index) => {

@@ -165,17 +165,7 @@ localStorage.setItem("uploadUrl", uploadUrl);
     return (
       <section className="upload-movie">
         <div className="upload-info ">
-          {/* <div className="col-sm-12">
-            <div className="jumbotron text-center">
-              <button
-                className="btn btn-lg btn-info"
-                onClick={this.uploadWidget}
-              >
-                {" "}
-                Upload Video
-              </button>
-            </div>
-          </div> */}
+         
   <Form.Group controlId="formFileSm" className="mb-3">
             <Form.Label>Movie Video Upload</Form.Label>
             <Form.Control

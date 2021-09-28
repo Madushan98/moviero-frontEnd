@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { updateUser } from "../../../redux/user/user.action";
 import { Link } from "react-router-dom";
 import store from "../../../redux/store";
+import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 class UserProfile extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,11 +41,8 @@ class UserProfile extends React.Component {
         <div className="user-profile">
 
           <div className="user-profile-container">
-          <div>
-              <h3>Change User Profile Details...</h3>
-              <hr></hr>
-          </div>
-
+          
+          <TitleBar title="Change User Profile Details..." />
           <FormInput
             type="text"
             name="User Name"

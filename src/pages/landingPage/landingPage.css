@@ -7,7 +7,6 @@
 
     display: flex;
     flex-direction: row;
-
 }
 
 .landing .top-title {
@@ -20,7 +19,6 @@
 }
 
 .landing .top-title h1 {
-
     font-style: normal;
     font-weight: bolder;
     font-size: 50px;
@@ -28,11 +26,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-
 }
 
 .landing .top-title h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
@@ -42,47 +39,45 @@
 
     margin-bottom: 25;
 
-    color: #929A9F;
+    color: #929a9f;
 }
 
 .landing .top-title button {
     width: 337px;
     height: 66px;
-    background: #11101D;
+    background: #11101d;
     cursor: pointer;
 
     box-shadow: 0px 10px 30px rgba(56, 29, 219, 0.2);
     border-radius: 8px;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 27px;
-
 }
-
 
 .landing .top-image {
     width: 520px;
     height: 650px;
-    background: linear-gradient(0deg, rgba(22, 21, 97, 0.56), rgba(22, 21, 97, 0.56)), url("../../assets/images/poster.png");
-    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2), -50px 100px 0px #F5F8FA;
+    background: linear-gradient(0deg,
+            rgba(22, 21, 97, 0.56),
+            rgba(22, 21, 97, 0.56)),
+        url("../../assets/images/poster.png");
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2), -50px 100px 0px #f5f8fa;
 }
 
 .second-land {
-
     height: 750px;
-    background: #F5F8FA;
+    background: #f5f8fa;
     display: flex;
     flex-direction: column;
     padding: 50px 0 50px 0;
     justify-content: center;
     text-align: center;
     align-items: center;
-
 }
-
 
 .second-land .description {
     width: 100%;
@@ -95,28 +90,22 @@
     align-self: center;
 }
 
-
 .second-land .description .title {
     color: white;
     align-self: center;
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
+
+
     width: 100%;
 }
 
 .second-land .description .title h1 {
-
-    font-size: 40px;
+    font-size: 50px;
     color: white;
+    font-weight: 900;
+    padding-bottom: 10px;
 }
 
-
 .second-land .description .pharagraph {
-
-
-
-
-
     width: 70%;
     align-self: center;
 }
@@ -132,10 +121,7 @@
     width: 660px;
     height: 82px;
     background: url("../../assets/images/devices.png");
-
 }
-
-
 
 .footer {
     color: white;

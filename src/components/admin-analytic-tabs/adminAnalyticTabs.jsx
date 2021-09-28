@@ -1,8 +1,40 @@
 import React from "react";
-
+import axios from "axios";
 import './adminAnalyticTabs.scss'
 
 class AnalyticTabs extends React.Component {
+ state = {
+    analytics: null, //
+  };
+
+  getAnalytics() {
+    const url = "/admin/analytics";
+    setTimeout(() => {
+      axios
+        .get(url, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          this.setState({
+             analytics: res.data,
+          });
+
+          console.log(this.state.analytics)
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }, 500);
+  }
+
+    componentDidMount() {
+        this.getAnalytics();
+    }
+
+
+
   render() {
     return (
       <div className="analytic-tab">

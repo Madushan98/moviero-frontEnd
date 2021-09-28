@@ -13,7 +13,7 @@ class Carousel extends React.Component {
 
 
     componentDidMount() {
-        setTimeout(() => {
+       
     
             axios.get('movies', {
                 headers: {
@@ -34,7 +34,7 @@ class Carousel extends React.Component {
                 err => {
                     console.error(err);
                 })
-        }, 500)
+      
     }
 
     render() {

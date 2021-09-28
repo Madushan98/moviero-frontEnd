@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import "./cartPage.scss";
-
+import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 class Cart extends React.Component {
   state = {
     moviesInCart : [],
@@ -75,15 +75,30 @@ setTimeout(() => {
       const imageUrl = "https://i.ibb.co/bdfMq7q/Romance.jpg";
       return (
         <section className="cart-page">
+            <TitleBar title="Cart"/>
           <div className="cart-table">
-          <table >
+          
+
+            {
+                 moviesInCart.length == 0 ?  (
+                <div
+                className="cart-empty "
+                >
+                NO ITEMS IN THE CART
+
+              </div>
+              ) : (
+                       <table >
             <tr>
               <th>Movie</th>
               <th>Information</th>
               <th>Price</th>
             </tr>
            
-            {moviesInCart .map((movie, index) => (
+              {
+                
+                
+              moviesInCart.map((movie, index) => (
             
                 <tr className="data-row" key={index}>
               <td className="table-data-1">
@@ -104,13 +119,16 @@ setTimeout(() => {
             ))}
           
           </table>
+              )
+          }  
+     
 </div>
           <div className="cart-checkOut">
             <div className="cart-summery">Summery</div>
             <hr className="solid" />
             <div className="cart-total">
               <div>Total</div>
-              <div>${ total}</div>
+              <div>${ Number(total).toFixed(2)  }</div>
             </div>
             <div className="cart-checkOut-button ">CheckOut</div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './login.css'
+import './login.scss'
 import FormInput from '../../components/reusable-Components/sign-input/sign-input.component'
 import { connect } from 'react-redux';
 import store from './../../redux/store'
@@ -57,21 +57,21 @@ class Login extends React.Component {
 
             < div className = "sign-in" >
             <  div className = "sign-title" >
-            <h1 > Welcome to Moviero </h1> <h3 > Don't Have an account? <p>  <Link to='/signup'>Sign Up</Link> </p> </h3>
+            <h1 > Welcome to Moviero </h1> <h3 > Don't Have an account?  <Link to='/signup'> Sign Up</Link> </h3>
 
 
             </div> 
             <form className="signin-form" onSubmit={this.handleSubmit } >
         < FormInput type = 'text'
         name = 'email'
-
+        placeholder = 'E-mail'
         onChange = {
             event => this.email = event.target.value
         }
 
         label = 'Email'
         required / > 
-        < FormInput type = 'password' name = 'password'  onChange = { event => this.password = event.target.value } label = 'Password' required / > 
+        < FormInput type = 'password'  placeholder = 'password' name = 'password'  onChange = { event => this.password = event.target.value } label = 'Password' required / > 
 
         < button className = "submit-button"type = "submit" > Login </button> 
         

@@ -9,8 +9,11 @@ import Carousel from "../../../components/carousel/carousel";
 import SearchBar from "../../../components/reusable-Components/searchBar/searchBar";
 import LatestMovies from "../../../components/latest-movies/lateset-movies";
 import NewlyAdded from "../../../components/newly-added/newlyAdded"
-
+import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 class HomePage extends React.Component {
+
+
+  
   render() {
     // const imageUrl = "https://i.ibb.co/SwrbMP3/s-2.jpg";
     return (
@@ -19,13 +22,11 @@ class HomePage extends React.Component {
         <Carousel />
 
         <div className="browser-features">
-          <div className="feature-title">Latest Movies</div>
-          <hr></hr>
+          <TitleBar title="Latest Movies"/>
           <LatestMovies />
         </div>
             <div className="browser-features">
-          <div className="feature-title">New Movies</div>
-          <hr></hr>
+         <TitleBar title="New Movies"/>
           <NewlyAdded />
         </div>
       </section>
