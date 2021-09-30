@@ -10,6 +10,7 @@ import SearchBar from "../../../components/reusable-Components/searchBar/searchB
 import LatestMovies from "../../../components/latest-movies/lateset-movies";
 import NewlyAdded from "../../../components/newly-added/newlyAdded"
 import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
+import { ToastContainer, toast } from 'react-toastify';
 class HomePage extends React.Component {
 
 
@@ -18,6 +19,9 @@ class HomePage extends React.Component {
     // const imageUrl = "https://i.ibb.co/SwrbMP3/s-2.jpg";
     return (
       <section id="home-page">
+          <div>
+        <ToastContainer />
+      </div>
         <SearchBar />
         <Carousel />
 

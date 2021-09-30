@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux"
 import './movie-card.scss'
 import {Link} from 'react-router-dom'
-
+import toastMessage from "../../../Toast/toastMessage";
 
 
 class MovieCard extends React.Component {
@@ -24,13 +24,13 @@ setTimeout(() => {
      .then(response => {
          
        console.log(response);
-         
+       toastMessage("Movie is Added To Cart");
        
      })
         .catch(error => {
          
-                   
-            console.error('There was an error!', error);
+               toastMessage(error);     
+            toastMessage("Try Again");
         });  
 
         }

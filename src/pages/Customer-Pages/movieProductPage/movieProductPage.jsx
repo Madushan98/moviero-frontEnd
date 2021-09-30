@@ -59,7 +59,7 @@ class MoviePage extends React.Component {
       });
 
     const url = "users/" + userId + "/cart/" + movieId;
-    setTimeout(() => {
+   
       axios
         .put(
           url,
@@ -79,7 +79,7 @@ class MoviePage extends React.Component {
           message("Please Try Again");
           console.error("There was an error!", error);
         });
-    }, 100);
+
   }
 
   getMovieDetails(movieId) {
@@ -116,7 +116,7 @@ class MoviePage extends React.Component {
     if (this.state.Movie === null) {
       return (
         <section className="movie-page">
-          <div className="movie-container">Loading</div>
+          <div>Loading</div>
         </section>
       );
     } else {
@@ -147,12 +147,14 @@ class MoviePage extends React.Component {
                   })`,
                 }}
               ></div>
-              <div>
+              <div className="preview-sideDetails">
                 <div className="preview-title">
-                  <div className="title">{title}</div>
-                  <div className="year">{releaseDate}</div>
+                  <div className="title">{title}
+                   <hr></hr>
+                  </div>
+                  <div className="year">{releaseDate.slice(0, 4)}</div>
+                      <div className="price">${moviePrice}</div> 
                   <div className="category">{movieCategory}</div>
-                  <div className="price">${moviePrice}</div>
                 </div>
 
                 <div
@@ -162,6 +164,7 @@ class MoviePage extends React.Component {
                   }
                 >
                   Add To Cart
+                  <i class='bx bx-cart-alt'></i>
                 </div>
                 <div
                   className="buy-button"
@@ -170,7 +173,10 @@ class MoviePage extends React.Component {
                   }
                 >
                   Buy the Movie
+                   <i class='bx bxs-cart-alt' ></i>
                 </div>
+
+              
               </div>
             </div>
 

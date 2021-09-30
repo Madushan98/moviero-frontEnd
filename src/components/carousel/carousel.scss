@@ -45,7 +45,7 @@ $table: 700px;
     @include desktop {
         overflow: hidden;
         position: relative;
-        height: 750px;
+        height: 650px;
         width: 100%;
         background-repeat: no-repeat;
         background-position: center;
@@ -143,7 +143,7 @@ $table: 700px;
 
         .more-info {
             display: table;
-            width: 150px;
+            width: 170px;
             height: 20px;
             cursor: pointer;
             font-weight: 600;
@@ -152,11 +152,14 @@ $table: 700px;
             border: none;
             border-radius: 5px;
             font-family: 'Nunito Sans', sans-serif;
-            background: #11101D;
-
+            padding-top: 10px;
+        
+            a {
+                text-decoration: none;
+            }
 
             span {
-                color: white;
+                color: rgb(255, 255, 255);
                 display: table-cell;
                 vertical-align: middle;
             }

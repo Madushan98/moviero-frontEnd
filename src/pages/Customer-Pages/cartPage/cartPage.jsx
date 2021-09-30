@@ -104,7 +104,7 @@ setTimeout(() => {
               <td className="table-data-1">
                 <div
                   className="movie-img"
-                  style={{ backgroundImage: `url(${imageUrl})` }}
+                  style={{ backgroundImage: `url(${movie.movieImageUrl ? movie.movieImageUrl:imageUrl })` }}
                 ></div>
               </td>
               <td className="table-data-2">

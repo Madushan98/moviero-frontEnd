@@ -5,11 +5,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
+import TitleBar from "../../../components/reusable-Components/titleBar/titleBar";
+import { connect } from "react-redux";
+
+
+
 class MovieDetailsEdit extends React.Component {
   state = {
     editable: true,
     movie: null,
+   
   };
 
   getMovieDetails(movieId) {
@@ -35,11 +40,10 @@ class MovieDetailsEdit extends React.Component {
     }, 500);
   }
 
-   
-    updateMovieDetails( data) {
-         const movieId = this.props.match.params.movieId;
+  updateMovieDetails(data) {
+    const movieId = this.props.match.params.movieId;
 
-         const uploadUrl = "admin/edit/" +movieId;
+    const uploadUrl = "admin/edit/" + movieId;
     axios
       .put(uploadUrl, data, {
         headers: {
@@ -48,44 +52,35 @@ class MovieDetailsEdit extends React.Component {
       })
       .then((res) => {
         console.log(res.data);
-
-      
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
-     
-        });
-  }  
-    
+      });
+  }
+
   handleUpdate = async (e) => {
     e.preventDefault();
 
     const releasedate = moment(this.releaseDate).format("DD/MM/YYYY");
     console.log(releasedate);
 
-       const {
-        title,
-        description,
-        moviePrice,
-        releaseDate,
-        imdbRating,
-       
-      } = this.state.movie;
+    const { title, description, moviePrice, releaseDate, imdbRating,movieCategory } =
+      this.state.movie;
     const movie = {
-      title: this.title  == undefined ? title : this.title,
+      title: this.title == undefined ? title : this.title,
       moviePrice: this.moviePrice == undefined ? moviePrice : this.moviePrice,
-      description: this.movieDescription  == undefined ? description : this.movieDescription,
-    
+      description:
+        this.movieDescription == undefined
+          ? description
+          : this.movieDescription,
+      movieCategory: this.movieCategory ? this.movieCategory : movieCategory,
       imdbRating: this.movieRating == undefined ? imdbRating : this.movieRating,
-      };
-      
-      this.updateMovieDetails(movie);
-       console.log(movie);
+    };
+
+    this.updateMovieDetails(movie);
+    console.log(movie);
   };
 
-    
-    
-    
-    
   componentDidMount() {
     const movieId = this.props.match.params.movieId;
     console.log(movieId);
@@ -108,11 +103,25 @@ class MovieDetailsEdit extends React.Component {
         imdbRating,
         movieBanerUrl,
         movieImageUrl,
-        movieVideoUrl,
+        movieCategory,
       } = this.state.movie;
+
+  
       return (
-          <section className="edit-movie">
+        <section className="edit-movie">
           <TitleBar title={"Edit Movie Details"} />
+
+          <div className="edit-movie-preview">
+           
+            <div className="edit-movie-image">
+              <img src={movieImageUrl}/>
+            </div>
+   <div className="edit-movie-banner">
+              <img src={movieBanerUrl}/>
+            </div>
+          </div>
+
+
           <div className="upload-info">
             <Form onSubmit={this.handleUpdate}>
               <fieldset disabled={!this.state.editable}>
@@ -144,7 +153,26 @@ class MovieDetailsEdit extends React.Component {
                       }
                     />
                   </Form.Group>
-
+                  <Form.Group
+                    as={Col}
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>Select Category</Form.Label>
+                    <Form.Select
+                      aria-label="Floating label select example"
+                      onChange={(event) =>
+                        (this.movieCategory = event.target.value)
+                      }
+                    
+                    >
+                      {this.props.categories.map((category, index) => {
+                        return (
+                          <option key={index}>{category.categoryName}</option>
+                        );
+                      })}
+                    </Form.Select>
+                  </Form.Group>
                   <Form.Group
                     as={Col}
                     className="mb-3"
@@ -162,7 +190,6 @@ class MovieDetailsEdit extends React.Component {
                   </Form.Group>
                 </Row>
 
-              
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlTextarea1"
@@ -177,7 +204,7 @@ class MovieDetailsEdit extends React.Component {
                     }
                   />
                 </Form.Group>
-
+                
                 <Button variant="primary" type="submit" className="button">
                   Submit
                 </Button>
@@ -190,4 +217,10 @@ class MovieDetailsEdit extends React.Component {
   }
 }
 
-export default MovieDetailsEdit;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories.Categories,
+  };
+};
+
+export default connect(mapStateToProps,null)(MovieDetailsEdit);

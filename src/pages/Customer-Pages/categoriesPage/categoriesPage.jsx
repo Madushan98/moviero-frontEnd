@@ -5,9 +5,11 @@ import axios from "axios";
 import MoviesList from "../../../components/reusable-Components/movieList/moviesList";
 import CategoryList from "../../../components/categoryList/categoryList";
 import SearchBar from "../../../components/reusable-Components/searchBar/searchBar";
+import { connect } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+
 class Categories extends React.Component {
   state = {
-    Categories: [],
     selectedCategory: "all",
     url: "http://localhost:8000/movies",
     Movies: [],
@@ -41,28 +43,8 @@ class Categories extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(
-      () => {
-        axios
-          .get("categories", {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.setState({
-              Categories: res.data,
-            });
-
-            console.log(this.state.Categories);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      },
-
-      500
-    );
+   
+    
 
     const url =
       "http://localhost:8000/movies/" +
@@ -111,6 +93,10 @@ class Categories extends React.Component {
 
     return (
       <section className="category-page" >
+        <div>
+  <ToastContainer/>
+        </div>
+      
             <SearchBar />
         <div className="categories">
 
@@ -128,7 +114,7 @@ class Categories extends React.Component {
         <div className="category-list">
           <CategoryList
             onChangeCategory={this.onCategoryChange}
-            Categories={this.state.Categories}
+            Categories={this.props.categories}
             selectedCategory={this.state.selectedCategory}
           />
         </div>
@@ -137,5 +123,11 @@ class Categories extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories.Categories,
+  };
+};
 
-export default withRouter(Categories);
+
+export default withRouter(connect(mapStateToProps,null)(Categories));

@@ -1,37 +1,39 @@
 
-import React, { Component } from 'react';
-import VideoPlayer from 'react-video-js-player';
+// import React, { Component } from 'react';
+// import VideoPlayer from 'react-video-js-player';
  
 
-class PlayVideo extends Component {
-    player = {}
-    state = {
-        video: {
-            src: "https://res.cloudinary.com/dui8rkfs5/video/upload/v1630231639/videos/q7wf58aaorymnmzoig8i.mp4",
-            poster: "http://www.example.com/path/to/video_poster.jpg"
-        }
-    }
+// class PlayVideo extends Component {
+   
+
+
  
- 
- 
-    render() {
+//     render() {
 
        
-        const { title, movieVideoUrl, movieImageUrl, movieBannerUrl } = this.props.playMovie;
-        console.log(movieVideoUrl);
-        return (
-            <div>
-                <VideoPlayer
-                    controls={true}
-                    src={movieVideoUrl}
-                    poster={movieBannerUrl}
-                    width="1500"
-                    height="700"
-                  
-                />
-            </div>
-        );
-    }
-}
+//         const { title, movieVideoUrl, movieImageUrl, movieBannerUrl } = this.props.playMovie;
+//         console.log(movieVideoUrl);
 
-export default PlayVideo;
+//         if (this.props.playMovie == null) {
+//             return(<div></div>)
+//         } else {
+       
+//              return (
+//                  <div>
+//                      <div>{title}</div>
+//                 <VideoPlayer
+//                     controls={true}
+//             src={this.props.playMovie.movieVideoUrl}
+//                     poster={movieBannerUrl}
+//                     width="1500"
+//                     height="700"
+                  
+//                 />
+//             </div>
+//         );
+//         }
+       
+//     }
+// }
+
+// export default PlayVideo;

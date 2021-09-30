@@ -1,0 +1,97 @@
+.movie-playList {
+
+    padding-left: 100px;
+    width: 95%;
+    margin: 40px;
+    box-sizing: border-box;
+
+
+    .movie-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        align-items: flex-start;
+        gap: 15px;
+
+
+
+        .main-movie {
+            border-radius: 5px;
+            padding-top: 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
+            background: black;
+            height: 700px;
+
+            .movie {
+                width: 100%;
+                border-radius: 5px;
+
+                video {
+                    width: 100%;
+                    height: 600px;
+                }
+
+                .movie-title {
+                    color: rgb(0, 0, 0);
+                    font-size: 25px;
+                    padding: 15px 0;
+
+                }
+            }
+        }
+
+
+
+        .movie-list {
+            border-radius: 5px;
+            height: 600px;
+            overflow-y: scroll;
+            padding: 10px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
+
+
+            .mov {
+
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border-radius: 5px;
+                padding-left: 15px;
+                padding-bottom: 10px;
+                margin: 5px;
+                background: #ffffff;
+
+
+
+            }
+
+            .mov:hover {
+                background: #5a5a5a;
+            }
+
+            .active {
+                background: #000000;
+
+                .movie-title {
+                    color: white;
+                }
+            }
+
+
+        }
+
+        .movie-list::-webkit-scrollbar {
+
+            width: 5px;
+        }
+
+        .movie-list::-webkit-scrollbar-track {
+            background: rgb(122, 122, 122);
+            border-radius: 50px;
+        }
+
+
+
+    }
+
+
+}

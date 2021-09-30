@@ -2,7 +2,7 @@
 import React from "react";
 import axios from "axios";
 import MoviesList from "../../../components/reusable-Components/movieList/moviesList"
-
+import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 import './searchResultPage.scss'
 
 class SearchResult extends React.Component {
@@ -80,10 +80,11 @@ class SearchResult extends React.Component {
   render() {
        const sortBy = this.props.match.params.sortBy;
     const title = this.props.match.params.title;
-
+    const heading = "Search result For " + title
         return (
           <section className="search-result">
-            <div className="search-result-title">Search result For {title}  </div>
+            <TitleBar title={heading}/>
+          
                   <MoviesList Movies={this.state.Movies}  currentPage={this.state.currentPage} handlePageChange={this.handlePageChange}  PageCount={this.state.PageCount}  />
 
             </section>

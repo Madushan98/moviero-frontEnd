@@ -2,21 +2,41 @@
     padding-left: 100px;
     padding-top: 50px;
     width: 95%;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
+   
 
-    .edit-movie-header {
-        font-family: 'Nunito Sans', sans-serif;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 30px;
-        line-height: 27px;
-        text-align: left;
-        margin-bottom: 30px;
-        color: #000000;
+    .edit-movie-preview {
+        padding: 20px;
 
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: space-between;
+
+        .edit-movie-image {
+            margin: 0 30px;
+            padding: 10px;
+            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.04), 0px 4px 56px rgba(0, 0, 0, 0.04);
+
+            img {
+                width: 200px;
+                height: 300px;
+            }
+        }
+
+        .edit-movie-banner {
+            margin: 0 30px;
+            padding: 10px;
+            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.04), 0px 4px 56px rgba(0, 0, 0, 0.04);
+
+            img {
+                width: 400px;
+                height: 300px;
+            }
+        }
     }
 
-    upload
+
 
     .form-details {
         margin-top: 15px;

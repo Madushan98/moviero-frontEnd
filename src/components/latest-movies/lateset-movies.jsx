@@ -34,7 +34,7 @@ class LatestMovies extends React.Component {
                     Movies: res.data.slice(0, 14) ,
                 })
      
-                console.log(this.state.Movies)
+               
 
             }).catch(
                 err => {

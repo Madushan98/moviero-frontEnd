@@ -34,7 +34,7 @@ class NewlyAdded extends React.Component {
                     Movies: res.data.content.slice(0, 14) ,
                 })
      
-                console.log(this.state.Movies)
+              
 
             }).catch(
                 err => {

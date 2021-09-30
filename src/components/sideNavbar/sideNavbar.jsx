@@ -83,17 +83,24 @@ class SideNavBar extends React.Component {
                 </li>
         
            <li>
-                  <Link to="adminMovieList">
+                  <Link to="/adminMovieList">
                     <i className="bx bx-list-check"></i>
                   </Link>
                   <span className="tip">Movie List</span>
                 </li>
           <li>
-            <Link to="addMovie">
+            <Link to="/addMovie">
               <i className="bx bxs-image-add"></i>
             </Link>
 
             <span className="tip">Add Movie</span>
+            </li>
+             <li>
+            <Link to="/addCategory">
+            <i class='bx bxs-duplicate' ></i>
+            </Link>
+
+            <span className="tip">Add Categories</span>
           </li>
   </ul>
           <div className="logOut">

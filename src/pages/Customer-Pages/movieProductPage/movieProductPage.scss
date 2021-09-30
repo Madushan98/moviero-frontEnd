@@ -2,147 +2,140 @@ $desktop: 1200px;
 $table: 700px;
 
 @mixin desktop {
-    @media (min-width: #{$desktop}) {
-        @content ;
-
-
-    }
-
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
 }
 
 @mixin tab {
-    @media (min-width: #{$table}) {
-        @content ;
-
-
-    }
+  @media (min-width: #{$table}) {
+    @content;
+  }
 }
-
 
 .movie-page {
-    padding-left: 120px;
-    height: 100%;
-    width: 100%;
-    padding-top: 50px;
-    display: flex;
-    position: relative;
-    color: white;
-    margin-top: 75px;
+  padding-left: 120px;
+  height: 100%;
+  width: 90%;
 
-
+  display: flex;
+  position: relative;
+  color: white;
+  margin-top: 75px;
 }
 
-
-
 .movie-preview {
+  width: 90%;
+  height: 750px;
+  background: #11101d;
+  border-radius: 25px;
+  font-family: "Roboto Mono", monospace;
+  font-style: normal;
+  font-weight: bold;
+  padding: 40px;
 
-    width: 90%;
-    height: 800px;
-    background: #11101D;
-    border-radius: 25px;
-    font-family: 'Roboto Mono', monospace;
-    font-style: normal;
-    font-weight: bold;
-    padding: 40px;
+  .preview {
+    display: flex;
+    flex-direction: row;
 
-    .preview {
-        display: flex;
-        flex-direction: row;
-
-        .preview-top {
-
-            border-radius: 25px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
-            width: 50%;
-            height: 450px;
-
-
-        }
-
-
-
-        .preview-title {
-
-            padding-left: 40px;
-            padding-top: 30%;
-
-
-            .title {
-
-                font-size: 40px;
-                line-height: 40px;
-                letter-spacing: 0.02em;
-            }
-
-            .year {
-                padding-top: 15px;
-                font-size: 28px;
-                line-height: 28px;
-                letter-spacing: 0.02em;
-
-            }
-
-            .category {
-                padding-top: 10px;
-                font-size: 24px;
-                line-height: 28px;
-                letter-spacing: 0.02em;
-
-                color: #D72525;
-
-            }
-
-            .price {
-                padding-top: 20px;
-                font-size: 34px;
-                line-height: 30px;
-                letter-spacing: 0.02em;
-
-            }
-
-
-        }
-
-
-        .cart-button {
-            margin: 20px 40px;
-            background: #000000;
-            border-radius: 10px;
-            padding-top: 10px;
-            text-align: center;
-            height: 40px;
-            width: 80%;
-            cursor: pointer;
-        }
-
-        .buy-button {
-            margin: 10px 40px 10px 40px;
-            background: #000000;
-            border-radius: 10px;
-            padding-top: 10px;
-            text-align: center;
-            height: 40px;
-            width: 80%;
-            cursor: pointer;
-        }
+    .preview-top {
+      border-radius: 25px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05),
+        0px 4px 30px rgba(0, 0, 0, 0.05);
+      width: 50%;
+      height: 450px;
     }
 
-    .preview-description {
+    .preview-sideDetails {
+      padding-left: 25px;
 
-        margin-top: 10px;
-        padding-top: 30px;
+      .preview-title {
+        padding-left: 40px;
+        padding-top: 10px;
 
-        .plot {
-
-            font-size: 36px;
-            line-height: 42px;
-            letter-spacing: 0.02em;
+        .title {
+          font-size: 40px;
+          line-height: 40px;
+          letter-spacing: 10px;
+          font-weight: 600;
         }
+
+        .year {
+          padding-top: 15px;
+          font-size: 28px;
+          line-height: 28px;
+          letter-spacing: 0.02em;
+        }
+
+        .category {
+          padding-top: 5px;
+          font-size: 24px;
+          line-height: 28px;
+          letter-spacing: 0.02em;
+
+          color: #d72525;
+        }
+
+        .price {
+          padding-top: 5px;
+          font-size: 24px;
+          line-height: 30px;
+          letter-spacing: 0.02em;
+        }
+      }
+
+      .cart-button {
+        margin: 100px 0 0 50px;
+
+        border-radius: 10px;
+        padding-top: 10px;
+        text-align: center;
+        height: 40px;
+        width: 100%;
+        cursor: pointer;
+        background: #5d519e;
+
+        i {
+          padding-left: 10px;
+        }
+      }
+
+      .buy-button {
+        margin: 10px 0 10px 50px;
+        background: #3018b9;
+        border-radius: 10px;
+        padding-top: 10px;
+        text-align: center;
+        height: 40px;
+        width: 100%;
+        cursor: pointer;
+
+        i {
+          padding-left: 10px;
+        }
+      }
+
+      .buy-button:hover {
+        background: black;
+      }
+
+      .cart-button:hover {
+        background: black;
+      }
     }
+  }
 
+  .preview-description {
+    margin-top: 10px;
+    padding-top: 30px;
 
-
+    .plot {
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: 0.02em;
+    }
+  }
 }

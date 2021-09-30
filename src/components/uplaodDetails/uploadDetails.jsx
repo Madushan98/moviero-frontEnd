@@ -5,50 +5,21 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment'
+import { connect } from "react-redux";
+import toastMessage from "../../Toast/toastMessage";
+
+
 class UploadDetails extends React.Component {
   state = {
     message: null,
-    categories: [],
+
     currentCategory: null,
   };
 
-  getCategories() {
-    setTimeout(
-      () => {
-        axios
-          .get("categories", {
-            headers: {
-              Authorization: localStorage.getItem("token"),
-            },
-          })
-          .then((res) => {
-            this.setState({
-              categories: res.data,
-             currentCategory: res.data[0].categoryName
-            });
-  
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      },
-
-      500
-    );
-  }
 
   uploadMovie(data) {
-    const message = (errorMessage) => toast(errorMessage,
-    {
-position: "top-right",
-autoClose: 1000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-}
-    );
+  
+
     const uploadUrl = "movies";
     axios
       .post(uploadUrl, data, {
@@ -58,11 +29,11 @@ progress: undefined,
       })
       .then((res) => {
         console.log(res.data);
-message("SuccesFully Uploaded");
+toastMessage("SuccesFully Uploaded");
       
       }).catch((err) => {
         console.log(err);
-        message("Please Try Again");
+        toastMessage("Please Try Again");
         });
   }
 
@@ -91,10 +62,6 @@ message("SuccesFully Uploaded");
     console.log(movie);
   };
 
-  componentDidMount() {
-    this.getCategories();
-   
-  }
 
   render() {
    
@@ -172,7 +139,7 @@ message("SuccesFully Uploaded");
                     (this.movieCategory = event.target.value)
                   }
                 >
-                  {this.state.categories.map((category, index) => {
+                  {this.props.categories.map((category, index) => {
                     return <option key={index}>{category.categoryName}</option>;
                   })}
                 </Form.Select>
@@ -209,4 +176,12 @@ message("SuccesFully Uploaded");
   }
 }
 
-export default UploadDetails;
+
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories.Categories,
+  };
+};
+
+
+export default  connect(mapStateToProps, null)(UploadDetails);

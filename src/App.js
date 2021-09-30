@@ -19,12 +19,12 @@ import AdminPage from "./pages/Admin-Pages/admin-home/adminHome";
 import Cart from "./pages/Customer-Pages/cartPage/cartPage";
 import MoviePage from "./pages/Customer-Pages/movieProductPage/movieProductPage";
 import AdminMovieList from './pages/Admin-Pages/admin-movies/adminMovies'
-import PlayerPage from "./pages/Customer-Pages/playerPage/playerPage";
 import SearchResult from "./pages/Customer-Pages/SearchResultPage/searchResultPage"
 import NewMovieUpload from "./pages/Admin-Pages/newMovie-Add/newMovie";
 import MovieDetialEdit from "./pages/Admin-Pages/admin-movie-edit/adminMovieEdit"
 import MovieDetailsEdit from "./pages/Admin-Pages/admin-movie-edit/adminMovieEdit";
-
+import NewCategory from "./pages/Admin-Pages/admin-newCategory/adminNewCategoryAdd";
+import PlayLists from "./pages/Customer-Pages/playList/playList";
 class App extends React.Component {
   componentDidMount() {
     const { logUser } = this.props;
@@ -53,7 +53,7 @@ class App extends React.Component {
               <Route exact path="/movies" component={Categories} />
               <Route exact path="/movie/:movieId" component={MoviePage} />
               <Route exact path="/user" component={UserProfile} />
-              <Route exact path="/stream" component={PlayerPage} />
+              <Route exact path="/stream" component={PlayLists} />
             
             <Route exact path="/search/:title/:sortBy" component={SearchResult} />
 
@@ -67,6 +67,12 @@ class App extends React.Component {
               <Route exact path="/addMovie"
                 render={() =>
                    this.props.currentRole == "ROLE_ADMIN" ? <NewMovieUpload /> : <Redirect to="/" />
+                }
+                
+              />
+                <Route exact path="/addCategory"
+                render={() =>
+                   this.props.currentRole == "ROLE_ADMIN" ? <NewCategory/> : <Redirect to="/" />
                 }
                 
                  />
