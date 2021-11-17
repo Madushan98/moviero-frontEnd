@@ -1,13 +1,13 @@
 import React from "react";
 import "./adminMovieEdit.scss";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import TitleBar from "../../../components/reusable-Components/titleBar/titleBar";
 import { connect } from "react-redux";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import toastMessage from "../../../Toast/toastMessage";
 
 
 class MovieDetailsEdit extends React.Component {
@@ -18,7 +18,7 @@ class MovieDetailsEdit extends React.Component {
   };
 
   getMovieDetails(movieId) {
-    const url = "http://localhost:8000/movies/mov/" + movieId;
+    const url = "/movies/mov/" + movieId;
 
     setTimeout(() => {
       axios
@@ -31,11 +31,11 @@ class MovieDetailsEdit extends React.Component {
           this.setState({
             movie: res.data,
           });
-
-          console.log(this.state.Movie);
+ 
         })
         .catch((err) => {
-          console.error(err);
+       
+             toastMessage("Please Try Again");
         });
     }, 500);
   }
@@ -51,10 +51,11 @@ class MovieDetailsEdit extends React.Component {
         },
       })
       .then((res) => {
-        console.log(res.data);
+      toastMessage("Movie Updated");
       })
       .catch((err) => {
-        console.log(err);
+    
+          toastMessage("Please Try Again");
       });
   }
 
@@ -62,7 +63,6 @@ class MovieDetailsEdit extends React.Component {
     e.preventDefault();
 
     const releasedate = moment(this.releaseDate).format("DD/MM/YYYY");
-    console.log(releasedate);
 
     const { title, description, moviePrice, releaseDate, imdbRating,movieCategory } =
       this.state.movie;
@@ -78,7 +78,6 @@ class MovieDetailsEdit extends React.Component {
     };
 
     this.updateMovieDetails(movie);
-    console.log(movie);
   };
 
   componentDidMount() {
@@ -109,6 +108,11 @@ class MovieDetailsEdit extends React.Component {
   
       return (
         <section className="edit-movie">
+             <div>
+             <ToastContainer />
+             </div >
+
+
           <TitleBar title={"Edit Movie Details"} />
 
           <div className="edit-movie-preview">

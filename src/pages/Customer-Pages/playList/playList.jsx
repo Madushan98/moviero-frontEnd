@@ -12,7 +12,7 @@ class PlayLists extends React.Component {
   };
 
   getStreamMovies(userId) {
-    const url = "http://localhost:8000/users/" + userId + "/purches";
+    const url = "users/" + userId + "/purches";
 
     setTimeout(() => {
       axios
@@ -70,7 +70,7 @@ class PlayLists extends React.Component {
          
                      {
             this.state.streamMovies.map((movie,index) => {
-                if (movie == this.state.currentPlay) {
+                if (movie === this.state.currentPlay) {
                      return (
                 <div className="mov active">
                         <StreamMovieCard key={index} movie={movie} setPlayUrl={ this.setPlayUrl}/>

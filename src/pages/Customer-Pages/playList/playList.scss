@@ -8,7 +8,7 @@
 
     .movie-container {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 3fr 1fr;
         align-items: flex-start;
         gap: 15px;
 
@@ -45,7 +45,7 @@
             border-radius: 5px;
             height: 600px;
             overflow-y: scroll;
-            padding: 10px;
+            padding-top: 10px;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05), 0px 4px 30px rgba(0, 0, 0, 0.05);
 
 
@@ -64,9 +64,7 @@
 
             }
 
-            .mov:hover {
-                background: #5a5a5a;
-            }
+
 
             .active {
                 background: #000000;
@@ -75,6 +73,13 @@
                     color: white;
                 }
             }
+
+           
+
+            .mov:hover {
+                background: #000000;
+            }
+
 
 
         }
@@ -89,7 +94,10 @@
             border-radius: 50px;
         }
 
-
+        .movie-list::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: black;
+        }
 
     }
 

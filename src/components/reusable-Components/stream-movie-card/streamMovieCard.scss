@@ -1,11 +1,11 @@
   .purchased-movie {
       position: relative;
       background: #0c0b0b;
-      border-radius: 10px;
+      border-radius: 5px;
       display: flex;
       flex-direction: row;
       width: 90%;
-      height: 80px;
+      height: 60px;
       padding: 10px;
       font-family: 'Roboto Mono', monospace;
       font-style: normal;
@@ -17,13 +17,13 @@
       margin-top: 10px;    
       .purchase-movie-img {
 
-          border-radius: 20px;
+          border-radius: 5px;
           background-repeat: no-repeat;
           background-position: center;
           background-size: cover;
 
-          width: 60px;
-          height: 60px;
+          width: 40px;
+          height: 40px;
       }
 
       .purchase-movie-info1 {

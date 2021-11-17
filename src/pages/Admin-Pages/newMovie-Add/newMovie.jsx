@@ -159,7 +159,6 @@ localStorage.setItem("uploadUrl", uploadUrl);
   };
 
 
-  componentDidMount() {}
 
   render() {
     return (

@@ -2,24 +2,19 @@ import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import "./uploadDetails.scss";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import moment from 'moment'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import moment from "moment";
 import { connect } from "react-redux";
 import toastMessage from "../../Toast/toastMessage";
-
 
 class UploadDetails extends React.Component {
   state = {
     message: null,
-
-    currentCategory: null,
+    currentCategory: this.props.categories[0].categoryName,
   };
 
-
   uploadMovie(data) {
-  
-
     const uploadUrl = "movies";
     axios
       .post(uploadUrl, data, {
@@ -29,43 +24,37 @@ class UploadDetails extends React.Component {
       })
       .then((res) => {
         console.log(res.data);
-toastMessage("SuccesFully Uploaded");
-      
-      }).catch((err) => {
+        toastMessage("SuccesFully Uploaded");
+      })
+      .catch((err) => {
         console.log(err);
         toastMessage("Please Try Again");
-        });
+      });
   }
-
-
 
   handleSubmit = async (e) => {
     e.preventDefault();
-
-    
-   
- const releasedate =  moment(this.releaseDate).format("DD/MM/YYYY") 
-                    console.log( releasedate)
+    const releasedate = moment(this.releaseDate).format("DD/MM/YYYY");
+    console.log(releasedate);
     const movie = {
       title: this.title,
       moviePrice: this.moviePrice,
-      movieCategory: this.movieCategory == undefined ? this.state.currentCategory: this.movieCategory,
+      movieCategory: this.movieCategory
+        ? this.movieCategory
+        : this.state.currentCategory,
       description: this.movieDescription,
-     movieVideoUrl: this.props.uploadMovieUrl,
+      movieVideoUrl: this.props.uploadMovieUrl,
       releaseDate: releasedate,
       imdbRating: this.movieRating,
       movieBanerUrl: this.props.uploadBannerUrl,
       movieImageUrl: this.props.uploadThumbnailUrl,
     };
-
+    console.log(movie)
+    console.log(this.state.currentCategory)
     this.uploadMovie(movie);
-    console.log(movie);
   };
 
-
   render() {
-   
-   
     const { uploadBannerUrl, uploadThumbnailUrl, uploadMovieUrl } = this.props;
 
     console.log(uploadMovieUrl);
@@ -74,13 +63,17 @@ toastMessage("SuccesFully Uploaded");
       // || uploadThumbnailUrl == null || uploadBannerUrl == null
       <div className="upload-info">
         <div>
-        <ToastContainer />
-      </div>
+          <ToastContainer />
+        </div>
         <Form onSubmit={this.handleSubmit}>
           <fieldset disabled={uploadMovieUrl == null ? true : false}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Movie Title</Form.Label>
-              <Form.Control type="text" placeholder="Movie Title"  onChange={(event) => (this.title = event.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Movie Title"
+                onChange={(event) => (this.title = event.target.value)}
+              />
             </Form.Group>
 
             <Row className="mb-3">
@@ -90,11 +83,8 @@ toastMessage("SuccesFully Uploaded");
                   type="date"
                   name="dor"
                   placeholder="Date of Release"
-                  onChange={(event) =>
-                    
-                  {
-                    this.releaseDate = event.target.value
-                     
+                  onChange={(event) => {
+                    this.releaseDate = event.target.value;
                   }}
                 />
               </Form.Group>
@@ -107,7 +97,8 @@ toastMessage("SuccesFully Uploaded");
                 <Form.Label>Price</Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="Ex: 16.50" step="0.01"
+                  placeholder="Ex: 16.50"
+                  step="0.01"
                   onChange={(event) => (this.moviePrice = event.target.value)}
                 />
               </Form.Group>
@@ -122,7 +113,8 @@ toastMessage("SuccesFully Uploaded");
                 <Form.Label>Movie Rating</Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="Ex: 8.0" step="0.01"
+                  placeholder="Ex: 8.0"
+                  step="0.01"
                   onChange={(event) => (this.movieRating = event.target.value)}
                 />
               </Form.Group>
@@ -160,22 +152,15 @@ toastMessage("SuccesFully Uploaded");
               />
             </Form.Group>
 
-            <Button 
-              variant="primary"
-              type="submit" className="button"
-             
-            >
+            <Button variant="primary" type="submit" className="button">
               Submit
             </Button>
           </fieldset>
         </Form>
-                
-
       </div>
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
@@ -183,5 +168,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-
-export default  connect(mapStateToProps, null)(UploadDetails);
+export default connect(mapStateToProps, null)(UploadDetails);

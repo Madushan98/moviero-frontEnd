@@ -1,29 +1,34 @@
 .new-category {
     padding-left: 150px;
-  
-    width: 60%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     margin-top: 50px;
 
     .new-category-container {
         box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.04), 0px 4px 56px rgba(0, 0, 0, 0.04);
         padding: 50px;
         height: 400px;
+        width: 60%;
+
+
+        .submit-button {
+            width: 200px;
+            margin-top: 40px;
+            height: 40px;
+            background-color: #161344;
+
+            border-radius: 6px;
+            font-family: Segoe UI;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
     }
 
-    .submit-button {
-        width: 200px;
-        margin-top: 40px;
-        height: 40px;
-        background-color: #161344;
 
-        border-radius: 6px;
-        font-family: Segoe UI;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 24px;
-        text-align: center;
-        color: white;
-        cursor: pointer;
-    }
 }

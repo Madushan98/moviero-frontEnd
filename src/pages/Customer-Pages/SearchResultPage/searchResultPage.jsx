@@ -23,7 +23,7 @@ class SearchResult extends React.Component {
     
 
      const url =
-      "http://localhost:8000/movies/search?title=" + title + "&sortBy=" + sortBy + "&page=" + this.state.currentPage +"&limit=8";
+      "/movies/search?title=" + title + "&sortBy=" + sortBy + "&page=" + this.state.currentPage +"&limit=8";
 
     this.getMovies(url);
 }
@@ -69,7 +69,7 @@ class SearchResult extends React.Component {
     const pageNumber = page - 1;
     
    const url =
-      "http://localhost:8000/movies/search?title=" + title + "&sortBy=" + sortBy + "&page=" + pageNumber +"&limit=8";
+      "movies/search?title=" + title + "&sortBy=" + sortBy + "&page=" + pageNumber +"&limit=8";
 
  
     

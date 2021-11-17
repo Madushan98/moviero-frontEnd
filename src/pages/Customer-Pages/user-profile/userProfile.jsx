@@ -5,7 +5,6 @@ import FormInput from "../../../components/reusable-Components/sign-input/sign-i
 import { connect } from "react-redux";
 import { updateUser } from "../../../redux/user/user.action";
 import { Link } from "react-router-dom";
-import store from "../../../redux/store";
 import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
 class UserProfile extends React.Component {
   handleSubmit = async (e) => {
@@ -15,7 +14,7 @@ class UserProfile extends React.Component {
 
     const user = {
       userName:
-        this.userName == undefined
+        this.userName === undefined
           ? this.props.currentUser.userName
           : this.userName,
       email:

@@ -1,29 +1,19 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "./movieProductPage.scss";
 import { connect } from "react-redux";
-
+import toastMessage from "../../../Toast/toastMessage";
 class MoviePage extends React.Component {
   state = {
     Movie: null,
   };
 
   buyMovie(movieId, userId) {
-    const message = (errorMessage) =>
-      toast(errorMessage, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+    const url = "users/" + userId + "/purches";
 
-    const url = "http://localhost:8000/users/" + userId + "/purches";
-
+    
     const movies = {
       movies: [movieId],
     };
@@ -37,26 +27,17 @@ class MoviePage extends React.Component {
         .then((response) => {
           console.log(response);
 
-          message("Buy SuccessFul");
+          toastMessage("Buy SuccessFul");
         })
         .catch((error) => {
-          message("Please Try Again");
-          console.error("There was an error!", error);
+          toastMessage("Please Try Again");
+        
         });
     }, 100);
   }
 
   addToCart(movieId, userId) {
-    const message = (errorMessage) =>
-      toast(errorMessage, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+   
 
     const url = "users/" + userId + "/cart/" + movieId;
    
@@ -73,17 +54,18 @@ class MoviePage extends React.Component {
         .then((response) => {
           console.log(response);
 
-          message("Movie Is Added to Cart");
+           toastMessage("Movie Is Added to Cart");
         })
         .catch((error) => {
-          message("Please Try Again");
+          
+          toastMessage("Please Try Again");
           console.error("There was an error!", error);
         });
 
   }
 
   getMovieDetails(movieId) {
-    const url = "http://localhost:8000/movies/mov/" + movieId;
+    const url = "movies/mov/" + movieId;
 
     setTimeout(() => {
       axios
@@ -113,7 +95,7 @@ class MoviePage extends React.Component {
 
   render() {
     const imageUrl = "https://i.ibb.co/SwrbMP3/s-2.jpg";
-    if (this.state.Movie === null) {
+    if (!this.state.Movie) {
       return (
         <section className="movie-page">
           <div>Loading</div>
@@ -124,9 +106,7 @@ class MoviePage extends React.Component {
         title,
         movieBanerUrl,
         moviePrice,
-        downloads,
         description,
-        imdbRating,
         movieCategory,
         releaseDate,
         movieId,

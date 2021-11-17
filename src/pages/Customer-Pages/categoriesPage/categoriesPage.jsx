@@ -6,12 +6,12 @@ import MoviesList from "../../../components/reusable-Components/movieList/movies
 import CategoryList from "../../../components/categoryList/categoryList";
 import SearchBar from "../../../components/reusable-Components/searchBar/searchBar";
 import { connect } from "react-redux";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 class Categories extends React.Component {
   state = {
     selectedCategory: "all",
-    url: "http://localhost:8000/movies",
+    url: "movies",
     Movies: [],
     currentPage: 0,
     PageCount: 0,
@@ -47,7 +47,7 @@ class Categories extends React.Component {
     
 
     const url =
-      "http://localhost:8000/movies/" +
+      "/movies/" +
       this.state.selectedCategory +
       "/?page=" +
       this.state.currentPage +
@@ -64,7 +64,7 @@ class Categories extends React.Component {
     console.log(this.state.selectedCategory);
 
     const url =
-      "http://localhost:8000/movies/" +
+      "/movies/" +
       category +
       "/?page=" +
       this.state.currentPage +
@@ -79,7 +79,7 @@ class Categories extends React.Component {
     const pageNumber = page - 1;
 
     const urll =
-      "http://localhost:8000/movies/" +
+      "/movies/" +
       this.state.selectedCategory +
       "?page=" +
       pageNumber +
@@ -89,7 +89,7 @@ class Categories extends React.Component {
   };
 
   render() {
-    const { match, history } = this.props;
+  
 
     return (
       <section className="category-page" >

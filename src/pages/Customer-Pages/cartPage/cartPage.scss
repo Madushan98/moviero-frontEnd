@@ -32,7 +32,7 @@ $tab2: 600px;
 
     display: block;
     width: 90%;
-    margin: 100px 20px 150px 20px;
+    margin: 50px 20px 50px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,11 +43,13 @@ $tab2: 600px;
     flex-direction: column;
 
 
+
     .cart-table {
         border-collapse: collapse;
         width: 500px;
         background: #ffffff;
-
+        height: 400px;
+        overflow-y: scroll;
         padding: 30px;
 
         th {
@@ -58,13 +60,13 @@ $tab2: 600px;
         }
 
 
-        .cart-empty{
+        .cart-empty {
             display: flex;
-            flex-direction:center;
+            flex-direction: center;
             justify-content: center;
-        } 
-        
-        
+        }
+
+
         .data-row {
 
 
@@ -124,6 +126,23 @@ $tab2: 600px;
 
 
 
+    }
+
+
+    .cart-table::-webkit-scrollbar {
+
+        width: 5px;
+    }
+
+    .cart-table::-webkit-scrollbar-track-piece {
+        background: rgb(122, 122, 122);
+        border-radius: 50px;
+
+    }
+
+    .cart-table::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: black;
     }
 
     .cart-checkOut {

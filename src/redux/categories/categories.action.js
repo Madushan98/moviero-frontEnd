@@ -23,6 +23,8 @@ export const getCategories = () => {
 
 
 
+
+
 export const fetchAllCategories = () => {
 
     return (dispatch) => {

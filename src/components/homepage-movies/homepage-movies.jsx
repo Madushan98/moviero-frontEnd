@@ -1,8 +1,8 @@
 import React from "react"
 import Carousel from 'react-elastic-carousel'
-import './latest-movies.scss'
+import './homepage-movies.scss'
 import axios from "axios";
-import MovieCard from '../../components/reusable-Components/movie-card/movie-card'
+import MovieCard from '../reusable-Components/movie-card/movie-card'
 
 
 const breakPoints = [
@@ -14,17 +14,17 @@ const breakPoints = [
 ];
 
 
-class LatestMovies extends React.Component {
+class HomepageMovies extends React.Component {
 
     state = {
         Movies: []
     };
 
 
-    componentDidMount() {
-          setTimeout(() => {
+    getHomepageMovies(url) {
+         setTimeout(() => {
     
-            axios.get('movies/latest', {
+            axios.get(url, {
                 headers: {
                     Authorization: localStorage.getItem('token'),
                 },
@@ -40,7 +40,12 @@ class LatestMovies extends React.Component {
                 err => {
                     console.error(err);
                 })
-        }, 500)
+        }, 200)
+    }
+
+    componentDidMount() {
+        const url = this.props.url
+        this.getHomepageMovies(url);
 
     }
 
@@ -72,4 +77,4 @@ class LatestMovies extends React.Component {
 
 
 
-export default LatestMovies;
+export default HomepageMovies;

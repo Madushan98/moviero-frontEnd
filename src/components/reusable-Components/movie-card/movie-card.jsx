@@ -13,7 +13,7 @@ class MovieCard extends React.Component {
 
 addToCart(movieId,userId){
 
-    const url = "http://localhost:8000/users/" + userId + "/cart/" + movieId;
+    const url = "users/" + userId + "/cart/" + movieId;
 setTimeout(() => {
          
  axios.put(url,{},{
@@ -24,7 +24,7 @@ setTimeout(() => {
      .then(response => {
          
        console.log(response);
-       toastMessage("Movie is Added To Cart");
+       toastMessage(response.data);
        
      })
         .catch(error => {

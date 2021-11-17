@@ -11,7 +11,6 @@ import { fetchAllCategories } from "../../../redux/categories/categories.action"
 class NewCategory extends React.Component {
 
 
-
     createNewCategory(category) {
         const url = "categories"
  const message = (errorMessage) => toast(errorMessage,
@@ -86,6 +85,10 @@ message("Category Created");
             type="submit"
             onClick={this.handleCreateCategory}
           >Add New Category</button>
+        </div>
+
+        <div  className="category-List">
+           <CategoryList />
         </div>
       </section>
     );

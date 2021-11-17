@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './redux/store';
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = 'http://localhost:8001/';
 
 ReactDOM.render(
   <React.StrictMode>

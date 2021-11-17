@@ -2,10 +2,11 @@ import React from "react";
 import axios from "axios";
 import "./signUp.scss";
 import FormInput from "../../components/reusable-Components/sign-input/sign-input.component";
-import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { withRouter, Link } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import toastMessage from "../../Toast/toastMessage";
+
 class Signup extends React.Component {
 
 
@@ -16,16 +17,6 @@ class Signup extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-      const message = (errorMessage) => toast(errorMessage,
-    {
-position: "top-right",
-autoClose: 2000,
-hideProgressBar: true,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-})
 
    
 
@@ -45,10 +36,10 @@ progress: undefined,
         })
         .catch((err) => {
           console.log(err);
-           message("E-mail is Already Taken");
+           toastMessage("E-mail is Already Taken");
         });
     } else {
-       message("Password Doesn't Match");
+      toastMessage("Password Doesn't Match");
         
     }
   };

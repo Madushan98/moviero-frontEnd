@@ -8,21 +8,10 @@
 
 
 
-        .movie-list-title {}
-
-        .movie-list-movies {
-
-
-           
-
-        }
-
-
-
         .movie-list-pagination {
             height: 80px;
             display: flex;
-            align-items: start;
+            align-items: flex-start;
             justify-content: center;
             width: 100%;
             position: absolute;
@@ -49,7 +38,7 @@
     .movie-list-pagination {
         height: 50px;
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         justify-content: center;
         width: 100%;
         margin-top: 50px;

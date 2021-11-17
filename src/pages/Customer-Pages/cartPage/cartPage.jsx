@@ -3,12 +3,54 @@ import axios from "axios";
 import { connect } from "react-redux";
 import "./cartPage.scss";
 import TitleBar  from "../../../components/reusable-Components/titleBar/titleBar"
+import toastMessage from "../../../Toast/toastMessage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 class Cart extends React.Component {
   state = {
     moviesInCart : [],
     total : 0,
     userId : this.props.currentUser.userId
   };
+
+  buyMovie(movieId, userId) {
+    const url = "users/" + this.state.userId + "/purches";
+    
+    var idList = [];
+
+    const movieIdList = this.state.moviesInCart.map(function (el) {
+      
+      const id = el.movieId;
+
+      idList.push(el.movieId);
+      return id;
+    });
+
+    console.log(movieIdList);
+
+    const movies = {
+      movies: idList,
+    };
+    setTimeout(() => {
+      axios
+        .put(url, movies, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          this.setState({moviesInCart: []})
+          toastMessage("Buy SuccessFul");
+        })
+        .catch((error) => {
+          toastMessage("Please Try Again");
+        
+        });
+    }, 100);
+  }
+
   getCart(userId) {
     const url = "users/" + userId + "/cart";
     setTimeout(() => {
@@ -75,12 +117,15 @@ setTimeout(() => {
       const imageUrl = "https://i.ibb.co/bdfMq7q/Romance.jpg";
       return (
         <section className="cart-page">
+            <div>
+            <ToastContainer />
+          </div>
             <TitleBar title="Cart"/>
           <div className="cart-table">
           
 
             {
-                 moviesInCart.length == 0 ?  (
+                 moviesInCart.length === 0 ?  (
                 <div
                 className="cart-empty "
                 >
@@ -130,7 +175,7 @@ setTimeout(() => {
               <div>Total</div>
               <div>${ Number(total).toFixed(2)  }</div>
             </div>
-            <div className="cart-checkOut-button ">CheckOut</div>
+            <div className="cart-checkOut-button " onClick={()=>this.buyMovie()}>CheckOut</div>
           </div>
         </section>
       );
