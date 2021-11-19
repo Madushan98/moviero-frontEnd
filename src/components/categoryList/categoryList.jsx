@@ -11,18 +11,17 @@ const CategoryList = (props) => {
     <section>
       <ListGroup>
         <ListGroup.Item
-        
-          active={selectedCategory == "all"}
+          active={selectedCategory === "all"}
           onClick={() => onChangeCategory("all")}
         >
-         All Movies
+          All Movies
         </ListGroup.Item>
 
         {Categories1.map((item, index) => {
           return (
             <ListGroup.Item
               key={index}
-              active={selectedCategory == item.categoryName}
+              active={selectedCategory === item.categoryName}
               onClick={() => onChangeCategory(item.categoryName)}
             >
               {item.categoryName}

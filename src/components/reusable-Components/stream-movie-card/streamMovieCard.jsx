@@ -9,7 +9,7 @@ const StreamMovieCard = ({movie, setPlayUrl}) => {
        
 
   
-     const {title,description,movieVideoUrl,movieCategory,imdbRating,releaseDate,downloads,movieImageUrl } =  movie;
+     const {title,movieImageUrl } =  movie;
   
 
   

@@ -2,7 +2,6 @@ import React from "react";
 import DropDownComponent from "../dropdown/dropdown";
 import "./searchBar.scss";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { connect } from "react-redux";
 import { fetchAllCategories } from "../../../redux/categories/categories.action";
 class SearchBar extends React.Component {
@@ -17,7 +16,7 @@ class SearchBar extends React.Component {
 
     fetchAllCategories();
 
-    console.log(this.props.categories)
+    console.log(this.props.categories);
   }
 
   handleFilter = (category) => {
@@ -25,9 +24,6 @@ class SearchBar extends React.Component {
   };
 
   render() {
-    
-    
-  
     return (
       <section className="searchBox">
         <div className="search-input">

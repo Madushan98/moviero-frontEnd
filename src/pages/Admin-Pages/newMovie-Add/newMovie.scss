@@ -3,6 +3,7 @@
     padding-top: 50px;
     width: 95%;
     padding-bottom: 20px;
+
     .button {
         background-color: #161344 !important;
         border: none !important;
@@ -11,7 +12,36 @@
         width: 80px !important;
     }
 
+    .edit-movie-preview {
+        padding: 20px;
 
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: space-between;
+
+        .edit-movie-image {
+            margin: 0 30px;
+            padding: 10px;
+            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.04), 0px 4px 56px rgba(0, 0, 0, 0.04);
+
+            img {
+                width: 200px;
+                height: 300px;
+            }
+        }
+
+        .edit-movie-banner {
+            margin: 0 30px;
+            padding: 10px;
+            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.04), 0px 4px 56px rgba(0, 0, 0, 0.04);
+
+            img {
+                width: 400px;
+                height: 300px;
+            }
+        }
+    }
 
     .form-details {
         margin-top: 15px;

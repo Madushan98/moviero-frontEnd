@@ -38,7 +38,7 @@ class AdminMovieList extends React.Component {
     this.setState({ currentPage: page - 1 });
     const pageNumber = page - 1;
 
-    const url = "movies" + "?page=" + pageNumber + "&limit=10";
+    const url = "movies?page=" + pageNumber + "&limit=10";
 
     this.getMovies(url);
   };
@@ -55,7 +55,7 @@ class AdminMovieList extends React.Component {
         .then((response) => {
           console.log(response);
 
-          const getMoviesUrl = "movies" + "?page=" + 0 + "&limit=10";
+          const getMoviesUrl = "movies?page=" + 0 + "&limit=10";
           this.getMovies(getMoviesUrl);
         })
         .catch((error) => {
@@ -65,7 +65,7 @@ class AdminMovieList extends React.Component {
   };
 
   componentDidMount() {
-    const getMoviesUrl = "movies" + "?page=" + 0 + "&limit=10";
+    const getMoviesUrl = "movies?page=" + 0 + "&limit=10";
     this.getMovies(getMoviesUrl);
   }
 

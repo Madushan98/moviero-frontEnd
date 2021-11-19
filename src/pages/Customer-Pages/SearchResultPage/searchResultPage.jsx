@@ -78,7 +78,6 @@ class SearchResult extends React.Component {
 
 
   render() {
-       const sortBy = this.props.match.params.sortBy;
     const title = this.props.match.params.title;
     const heading = "Search result For " + title
         return (

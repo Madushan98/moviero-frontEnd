@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap"
 import { connect } from "react-redux";
 import { setCurrentRole, fetchUserRoles } from "../../../redux/userRole/userRole.action";
@@ -35,25 +35,17 @@ class SwitchDropDown extends React.Component {
        
   const {  setCurrentRole } = this.props;
     
-
-   
     setCurrentRole(role);
 
     }
 
 
-    componentDidMount() {
-
-
-
-    }
 
 
     render() {
    
-      const { accounts } = this.props.accounts;
       console.log("My Roles" + this.props.accounts.length);
-      if(this.props.accounts.length == 2) {
+      if(this.props.accounts.length === 2) {
 return (
                 <div>
             <DropdownButton size="sm" id="dropdown-basic-button" title="" >

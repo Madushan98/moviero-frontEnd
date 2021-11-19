@@ -9,7 +9,7 @@ class UserPasswordReset extends React.Component {
 
     const user = {
       userName:
-        this.userName == undefined
+        this.userName === undefined
           ? this.props.currentUser.userName
           : this.userName,
       email:

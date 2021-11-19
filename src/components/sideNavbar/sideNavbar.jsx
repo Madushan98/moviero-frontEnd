@@ -17,7 +17,7 @@ class SideNavBar extends React.Component {
     fetchUserRoles(this.props.currentUser.userRole);
   }
   render() {
-    if (this.props.currentRole == "ROLE_CUSTOMER") {
+    if (this.props.currentRole === "ROLE_CUSTOMER") {
       return (
         <div className="side_navbar">
           <div className="logo">

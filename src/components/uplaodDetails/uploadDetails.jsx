@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import "./uploadDetails.scss";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import { connect } from "react-redux";
@@ -35,7 +35,6 @@ class UploadDetails extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const releasedate = moment(this.releaseDate).format("DD/MM/YYYY");
-    console.log(releasedate);
     const movie = {
       title: this.title,
       moviePrice: this.moviePrice,
@@ -55,7 +54,7 @@ class UploadDetails extends React.Component {
   };
 
   render() {
-    const { uploadBannerUrl, uploadThumbnailUrl, uploadMovieUrl } = this.props;
+    const {uploadMovieUrl } = this.props;
 
     console.log(uploadMovieUrl);
 

@@ -1,7 +1,6 @@
 import React from "react";
 import "./adminMovieEdit.scss";
 import axios from "axios";
-import moment from "moment";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import TitleBar from "../../../components/reusable-Components/titleBar/titleBar";
 import { connect } from "react-redux";
@@ -62,19 +61,17 @@ class MovieDetailsEdit extends React.Component {
   handleUpdate = async (e) => {
     e.preventDefault();
 
-    const releasedate = moment(this.releaseDate).format("DD/MM/YYYY");
+ 
 
-    const { title, description, moviePrice, releaseDate, imdbRating,movieCategory } =
+    const { title, description, moviePrice,imdbRating ,movieCategory } =
       this.state.movie;
     const movie = {
-      title: this.title == undefined ? title : this.title,
-      moviePrice: this.moviePrice == undefined ? moviePrice : this.moviePrice,
+      title: this.title  ? this.title : title ,
+      moviePrice: this.moviePrice ? this.moviePrice : moviePrice,
       description:
-        this.movieDescription == undefined
-          ? description
-          : this.movieDescription,
+        this.movieDescription ? this.movieDescription : description,
       movieCategory: this.movieCategory ? this.movieCategory : movieCategory,
-      imdbRating: this.movieRating == undefined ? imdbRating : this.movieRating,
+      imdbRating: this.movieRating  ?  this.movieRating : imdbRating,
     };
 
     this.updateMovieDetails(movie);
@@ -98,7 +95,6 @@ class MovieDetailsEdit extends React.Component {
         title,
         description,
         moviePrice,
-        releaseDate,
         imdbRating,
         movieBanerUrl,
         movieImageUrl,
@@ -118,10 +114,10 @@ class MovieDetailsEdit extends React.Component {
           <div className="edit-movie-preview">
            
             <div className="edit-movie-image">
-              <img src={movieImageUrl}/>
+              <img src={movieImageUrl} alt= "No Link"/>
             </div>
    <div className="edit-movie-banner">
-              <img src={movieBanerUrl}/>
+              <img src={movieBanerUrl} alt= "No Link"/>
             </div>
           </div>
 
@@ -164,6 +160,7 @@ class MovieDetailsEdit extends React.Component {
                   >
                     <Form.Label>Select Category</Form.Label>
                     <Form.Select
+                      
                       aria-label="Floating label select example"
                       onChange={(event) =>
                         (this.movieCategory = event.target.value)
@@ -171,9 +168,19 @@ class MovieDetailsEdit extends React.Component {
                     
                     >
                       {this.props.categories.map((category, index) => {
-                        return (
-                          <option key={index}>{category.categoryName}</option>
+
+                        if (movieCategory === category.categoryName) {
+                          return (
+                          
+                          <option key={index} selected >{category.categoryName}</option>
                         );
+                        } else {
+                            return (
+                          
+                          <option key={index} >{category.categoryName}</option>
+                        );
+                       }
+                      
                       })}
                     </Form.Select>
                   </Form.Group>

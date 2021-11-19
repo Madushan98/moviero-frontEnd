@@ -1,15 +1,13 @@
 import "./App.css";
 import Signup from "./pages/sign-up/signup";
-import React, { useEffect } from "react";
-import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "./pages/login/login";
 import LandingPage from "./pages/landingPage/landingPage";
 import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
 import HomePage from "./pages/Customer-Pages/homepage/homepage";
 import SideNavBar from "./components/sideNavbar/sideNavbar";
 import { connect } from "react-redux";
-import store from "./redux/store";
 import { logUser } from "./redux/user/user.action";
 import { setCurrentRole, fetchUserRoles } from "./redux/userRole/userRole.action";
 import Categories from "./pages/Customer-Pages/categoriesPage/categoriesPage";
@@ -21,13 +19,12 @@ import MoviePage from "./pages/Customer-Pages/movieProductPage/movieProductPage"
 import AdminMovieList from './pages/Admin-Pages/admin-movies/adminMovies'
 import SearchResult from "./pages/Customer-Pages/SearchResultPage/searchResultPage"
 import NewMovieUpload from "./pages/Admin-Pages/newMovie-Add/newMovie";
-import MovieDetialEdit from "./pages/Admin-Pages/admin-movie-edit/adminMovieEdit"
 import MovieDetailsEdit from "./pages/Admin-Pages/admin-movie-edit/adminMovieEdit";
 import NewCategory from "./pages/Admin-Pages/admin-newCategory/adminNewCategoryAdd";
 import PlayLists from "./pages/Customer-Pages/playList/playList";
 class App extends React.Component {
   componentDidMount() {
-    const { logUser } = this.props;
+    const { logUser } =  this.props;
 
     logUser();
 
@@ -48,7 +45,7 @@ class App extends React.Component {
             <SideNavBar />
             <Switch>
               <Route exact path="/"  render={() =>
-                 this.props.currentRole == "ROLE_CUSTOMER" ? <HomePage /> : <Redirect to="/admin" />
+                 this.props.currentRole === "ROLE_CUSTOMER" ? <HomePage /> : <Redirect to="/admin" />
                 } />
               <Route exact path="/movies" component={Categories} />
               <Route exact path="/movie/:movieId" component={MoviePage} />
@@ -59,20 +56,20 @@ class App extends React.Component {
 
               <Route exact path="/cart" component={Cart} />
                 <Route exact path="/adminMovieList"  render={() =>
-                 this.props.currentRole == "ROLE_ADMIN" ? <AdminMovieList /> : <Redirect to="/" />
+                 this.props.currentRole === "ROLE_ADMIN" ? <AdminMovieList /> : <Redirect to="/" />
                 } />
                <Route exact path="/admin"  render={() =>
-                   this.props.currentRole == "ROLE_ADMIN" ? <AdminPage /> : <Redirect to="/" />
+                   this.props.currentRole === "ROLE_ADMIN" ? <AdminPage /> : <Redirect to="/" />
                 } />
               <Route exact path="/addMovie"
                 render={() =>
-                   this.props.currentRole == "ROLE_ADMIN" ? <NewMovieUpload /> : <Redirect to="/" />
+                   this.props.currentRole === "ROLE_ADMIN" ? <NewMovieUpload /> : <Redirect to="/" />
                 }
                 
               />
                 <Route exact path="/addCategory"
                 render={() =>
-                   this.props.currentRole == "ROLE_ADMIN" ? <NewCategory/> : <Redirect to="/" />
+                   this.props.currentRole === "ROLE_ADMIN" ? <NewCategory/> : <Redirect to="/" />
                 }
                 
                  />

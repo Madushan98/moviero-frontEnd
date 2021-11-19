@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router";
+
 import UploadDetails from "../../../components/uplaodDetails/uploadDetails";
-import { Form, Row, Col, Button,ProgressBar } from "react-bootstrap";
+import { Form, Button,ProgressBar } from "react-bootstrap";
 import "./newMovie.scss";
 import axios from "axios";
 class NewMovieUpload extends React.Component {
@@ -163,6 +163,17 @@ localStorage.setItem("uploadUrl", uploadUrl);
   render() {
     return (
       <section className="upload-movie">
+
+       <div className="edit-movie-preview">
+           
+            <div className="edit-movie-image">
+              <img src={this.state.thumbnailLink} alt="No thumbnail is Set"/>
+            </div>
+   <div className="edit-movie-banner">
+              <img src={this.state.bannerLink} alt="No Banner is Set"/>
+            </div>
+          </div>
+
         <div className="upload-info ">
          
   <Form.Group controlId="formFileSm" className="mb-3">
