@@ -11,7 +11,10 @@ import toastMessage from "../../Toast/toastMessage";
 class UploadDetails extends React.Component {
   state = {
     message: null,
-    currentCategory: this.props.categories[0].categoryName,
+    currentCategory:
+      this.props.categories.length > 0
+        ? this.props.categories[0].categoryName
+        : null,
   };
 
   uploadMovie(data) {
@@ -48,13 +51,13 @@ class UploadDetails extends React.Component {
       movieBanerUrl: this.props.uploadBannerUrl,
       movieImageUrl: this.props.uploadThumbnailUrl,
     };
-    console.log(movie)
-    console.log(this.state.currentCategory)
+    console.log(movie);
+    console.log(this.state.currentCategory);
     this.uploadMovie(movie);
   };
 
   render() {
-    const {uploadMovieUrl } = this.props;
+    const { uploadMovieUrl } = this.props;
 
     console.log(uploadMovieUrl);
 
